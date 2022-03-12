@@ -79,10 +79,10 @@
 		A119528527BEE72A008C6645 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				A11952A127BEE942008C6645 /* Feed Feature */,
 				A17BF63727BF7BB900454EA4 /* Feed API */,
 				A119528627BEE72A008C6645 /* EssentialFeed.h */,
 				A119528727BEE72A008C6645 /* EssentialFeed.docc */,
-				A11952A127BEE942008C6645 /* Feed Feature */,
 			);
 			path = EssentialFeed;
 			sourceTree = "<group>";
