@@ -9,13 +9,15 @@ import XCTest
 
 class RemoteFeedLoader {
     private let client: HTTPClient
+    private let url: URL
     
-    init(client: HTTPClient) {
+    init(client: HTTPClient, url: URL) {
         self.client = client
+        self.url = url
     }
     
     func load() {
-        client.get(from: URL(string: "https://a-unique-url.com")!)
+        client.get(from: url)
     }
 }
 
@@ -34,10 +36,10 @@ class HTTPClientSpy: HTTPClient {
 }
 
 class RemoteFeedLoaderTests: XCTestCase {
-    func test_notLoadingAnyURL_clientDoesNotRequestAnyURL() {
+    func test_notLoadingAnyURL_doesNotRequestDataFromURL() {
         // Given
         let client = HTTPClientSpy()
-        _ = RemoteFeedLoader(client: client)
+        _ = RemoteFeedLoader(client: client, url: URL(string: "https://a-unique-url.com")!)
         
         // When (missing for that case)
         
@@ -45,15 +47,28 @@ class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertNil(client.requestedURL)
     }
     
-    func test_loadingAnURL_clientDoesRequestAnURL() {
+    func test_loadingAnURL_doesRequestDataFromURL() {
         // Given
         let client = HTTPClientSpy()
-        let sut = RemoteFeedLoader(client: client)
+        let sut = RemoteFeedLoader(client: client, url: URL(string: "https://a-unique-url.com")!)
         
-        // When (missing for that case)
+        // When
         sut.load()
         
         // Then
         XCTAssertNotNil(client.requestedURL)
+    }
+    
+    func tesst_loadingAnURL_doesNotRequestDataFromThatURL() {
+        // Given
+        let client = HTTPClientSpy()
+        let url = URL(string: "https://a-unique-url.com")!
+        let sut = RemoteFeedLoader(client: client, url: url)
+        
+        // When
+        sut.load()
+        
+        // Then
+        XCTAssertEqual(client.requestedURL, url)
     }
 }
