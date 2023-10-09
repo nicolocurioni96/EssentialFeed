@@ -47,15 +47,13 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         // Given
         let (sut, client) = makeSUT()
-        var capturedErrors: [RemoteFeedLoader.Error?] = []
-        
-        // When
-        sut.load { capturedErrors.append($0) }
-        let error = NSError(domain: "ClientError", code: 1, userInfo: nil)
-        client.complete(with: error)
         
         // Then
-        XCTAssertEqual(capturedErrors, [.connectivity])
+        expect(sut, with: .connectivity) {
+            // When
+            let error = NSError(domain: "ClientError", code: 1)
+            client.complete(with: error)
+        }
     }
     
     func test_load_deliversErrorOnClientNon200HTTPResponse() {
@@ -76,15 +74,13 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseAndInvalidJSON() {
         // Given
         let (sut, client) = makeSUT()
-        var capturedErrors: [RemoteFeedLoader.Error] = []
-        let invalidJSONData: Data = "Invalid JSON".data(using: .utf8)!
-        
-        // When
-        sut.load { capturedErrors.append($0) }
-        client.complete(withStatusCode: 200, and: invalidJSONData)
         
         // Then
-        XCTAssertEqual(capturedErrors, [.invalidData])
+        expect(sut, with: .invalidData) {
+            // When
+            let invalidJSONData: Data = "Invalid JSON".data(using: .utf8)!
+            client.complete(withStatusCode: 200, and: invalidJSONData)
+        }
     }
     
     // MARK: - Helper methods
