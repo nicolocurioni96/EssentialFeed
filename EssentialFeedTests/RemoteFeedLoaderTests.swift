@@ -53,7 +53,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
 }
 
-class HTTPClientSpy: HTTPClient {
+private class HTTPClientSpy: HTTPClient {
     init() {}
     
     var requestedURLs: [URL] = []
