@@ -47,16 +47,14 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         // Given
         let (sut, client) = makeSUT()
-        var capturedError: RemoteFeedLoader.Error?
+        var capturedErrors: [RemoteFeedLoader.Error?] = []
         
         // When
-        sut.load { error in
-            capturedError = error
-        }
+        sut.load { capturedErrors.append($0) }
         client.completions[0](NSError(domain: "ClientError", code: 1, userInfo: nil))
         
         // Then
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
     // MARK: - Helper methods
