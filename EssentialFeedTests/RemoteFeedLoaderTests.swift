@@ -25,7 +25,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT(url: url)
         
         // When
-        sut.load()
+        sut.load { _ in }
         
         // Then
         XCTAssertNotNil(client.requestedURLs)
@@ -37,8 +37,8 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT(url: url)
         
         // When
-        sut.load()
-        sut.load()
+        sut.load { _ in }
+        sut.load { _ in }
         
         // Then
         XCTAssertEqual(client.requestedURLs, [url, url])
