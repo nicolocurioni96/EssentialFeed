@@ -120,10 +120,9 @@ class RemoteFeedLoaderTests: XCTestCase {
         let feedItems = [item1, item2, item3, item4]
         
         // When
-        expect(sut, with: .success(feedItems.map { $0.item })) {
+        expect(sut, with: .success(feedItems.map { $0.model })) {
             // Then
-            let dictionaryItems = ["items": feedItems.map { $0.dictionary }]
-            let JSONData = try! dictionaryItems.serialize()
+            let JSONData = try! makeJSONItem(feedItems.map { $0.json })
             client.complete(withStatusCode: 200, and: JSONData)
         }
     }
@@ -143,19 +142,24 @@ class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
-    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (item: FeedItem, dictionary: [String: Any]) {
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
         let feedItem = FeedItem(id: id,
                                 description: description,
                                 location: location,
                                 imageURL: imageURL)
-        let dictionary = [
+        let json = [
             "id": id.description,
             "description": description,
             "location": location,
             "imageURL": imageURL.description
         ].compactMapValues { $0 }
         
-        return (item: feedItem, dictionary: dictionary)
+        return (model: feedItem, json: json)
+    }
+    
+    private func makeJSONItem(_ items: [[String: Any]]) throws -> Data {
+        let dictionaryItems = ["items": items]
+        return try JSONSerialization.data(withJSONObject: dictionaryItems)
     }
 }
 
