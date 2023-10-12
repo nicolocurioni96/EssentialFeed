@@ -134,6 +134,23 @@ class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversEmptyListWhenReferenceToSUTHasBeenLost() {
+        // Given
+        let client = HTTPClientSpy()
+        let url = URL(string: "https://a-random-url.com")!
+        var sut: RemoteFeedLoader? = RemoteFeedLoader(client: client, url: url)
+        var capturedResults: [RemoteFeedLoader.Result] = []
+        
+        // When
+        sut?.load { capturedResults.append($0) }
+        sut = nil
+        client.complete(withStatusCode: 200, and: try! makeJSONItem([]))
+        
+        // Then
+        XCTAssertEqual(capturedResults, [])
+        
+    }
+    
     // MARK: - Helper methods
     private func makeSUT(url: URL = URL(string: "https://another-amazing-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
