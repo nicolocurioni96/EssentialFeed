@@ -40,7 +40,7 @@ public final class RemoteFeedLoader {
             switch result {
             case let .success(httpResponse, data):
                 if httpResponse.statusCode == 200, let feedsRoot = try? JSONDecoder().decode(Root.self, from: data) {
-                    completion(.success(feedsRoot.items.map { $0.createFeedItem() }))
+                    completion(.success(feedsRoot.items.map { $0.feedItem }))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -60,8 +60,8 @@ public final class RemoteFeedLoader {
         let location: String?
         let imageURL: URL
         
-        func createFeedItem() -> FeedItem {
-            return FeedItem(id: id,
+        var feedItem: FeedItem {
+            FeedItem(id: id,
                             description: description,
                             location: location,
                             imageURL: imageURL
