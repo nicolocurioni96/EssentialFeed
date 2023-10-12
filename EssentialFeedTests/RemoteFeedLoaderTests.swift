@@ -135,9 +135,13 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     // MARK: - Helper methods
-    private func makeSUT(url: URL = URL(string: "https://another-amazing-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://another-amazing-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(client: client, url: url)
+        
+        addTeardownBlock { [weak sut] in
+            XCTAssertNil(sut, file: file, line: line)
+        }
         
         return (sut: sut, client: client)
     }
