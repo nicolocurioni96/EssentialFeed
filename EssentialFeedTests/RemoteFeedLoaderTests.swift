@@ -49,7 +49,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         // Then
-        expect(sut, with: .failure(.connectivity)) {
+        expect(sut, with: .failure(RemoteFeedLoader.Error.connectivity)) {
             // When
             let error = NSError(domain: "ClientError", code: 1)
             client.complete(with: error)
@@ -70,7 +70,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         statusCodes.enumerated().forEach { index, statusCode in
             // Then
-            expect(sut, with: .failure(.invalidData)) {
+            expect(sut, with: .failure(RemoteFeedLoader.Error.invalidData)) {
                 // When
                 client.complete(withStatusCode: statusCode, and: validJSON, at: index)
             }
@@ -83,7 +83,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         // Then
-        expect(sut, with: .failure(.invalidData)) {
+        expect(sut, with: .failure(RemoteFeedLoader.Error.invalidData)) {
             // When
             let invalidJSONData: Data = "Invalid JSON".data(using: .utf8)!
             client.complete(withStatusCode: 200, and: invalidJSONData)
@@ -158,7 +158,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(client, file: file, line: line)
-    
+        
         return (sut: sut, client: client)
     }
     
