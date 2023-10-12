@@ -60,12 +60,19 @@ class RemoteFeedLoaderTests: XCTestCase {
         // Given
         let (sut, client) = makeSUT()
         let statusCodes = [199, 201, 300, 400, 500]
+        let validJSON = try! makeJSONItem([
+            makeItem(id: UUID(),
+                     description: "A description",
+                     location: "A location",
+                     imageURL: URL(string: "https://an-url.com")!
+                    ).json
+        ])
         
         statusCodes.enumerated().forEach { index, statusCode in
             // Then
             expect(sut, with: .failure(.invalidData)) {
                 // When
-                client.complete(withStatusCode: statusCode, at: index)
+                client.complete(withStatusCode: statusCode, and: validJSON, at: index)
             }
         }
     }
@@ -177,7 +184,7 @@ private class HTTPClientSpy: HTTPClient {
         messages[index].completion(.failure(error))
     }
     
-    func complete(withStatusCode statusCode: Int, and data: Data = Data(), at index: Int = 0) {
+    func complete(withStatusCode statusCode: Int, and data: Data, at index: Int = 0) {
         let httpResponse = HTTPURLResponse(url: requestedURLs[index],
                                            statusCode: statusCode,
                                            httpVersion: nil,
