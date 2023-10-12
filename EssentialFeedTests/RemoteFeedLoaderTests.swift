@@ -142,9 +142,8 @@ class RemoteFeedLoaderTests: XCTestCase {
             "imageURL": feedItems[3].imageURL.description,
         ]
         
-        let validJSONData = try! JSONSerialization.data(withJSONObject: [
-            "items": [item1, item2, item3, item4]
-        ])
+        let items = ["items": [item1, item2, item3, item4]]
+        let validJSONData = try! JSONSerialization.data(withJSONObject: items)
         
         // When
         expect(sut, with: .success(feedItems)) {
