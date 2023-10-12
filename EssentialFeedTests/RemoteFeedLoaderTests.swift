@@ -83,18 +83,74 @@ class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
-    func test_load_deliversNoItemsOn200HTTPResponseAndWithEmptyJSONList() {
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         // Given
         let (sut, client) = makeSUT()
-        var capturedResults: [RemoteFeedLoader.Result] = []
         
         // When
-        sut.load { capturedResults.append($0) }
-        let emptyJSONListData: Data = "{\"items\":[]}".data(using: .utf8)!
-        client.complete(withStatusCode: 200, and: emptyJSONListData)
+        expect(sut, with: .success([])) {
+            // Then
+            let emptyJSONListData: Data = "{\"items\":[]}".data(using: .utf8)!
+            client.complete(withStatusCode: 200, and: emptyJSONListData)
+        }
+    }
+    
+    func test_load_deliversItemsOn200HTTPResponseWithValidJSONList() {
+        // Given
+        let (sut, client) = makeSUT()
         
-        // Then
-        XCTAssertEqual(capturedResults, [.success([])])
+        let feedItems: [FeedItem] = [
+        FeedItem(id: UUID(),
+                 description: "First feed item",
+                 location: "First feed location",
+                 imageURL: URL(string: "https://first-feed-url.com")!),
+        FeedItem(id: UUID(),
+                 description: nil,
+                 location: "Second feed location",
+                 imageURL: URL(string: "https://second-feed-url.com")!),
+        FeedItem(id: UUID(),
+                 description: "Third feed item",
+                 location: nil,
+                 imageURL: URL(string: "https://third-feed-url.com")!),
+        FeedItem(id: UUID(),
+                 description: nil,
+                 location: nil,
+                 imageURL: URL(string: "https://fourth-feed-url.com")!)
+        ]
+        
+        let item1 = [
+            "id": feedItems[0].id.description,
+            "description": feedItems[0].description!,
+            "location": feedItems[0].location!,
+            "imageURL": feedItems[0].imageURL.description,
+        ]
+        
+        let item2 = [
+            "id": feedItems[1].id.description,
+            "location": feedItems[1].location!,
+            "imageURL": feedItems[1].imageURL.description,
+        ]
+        
+        let item3 = [
+            "id": feedItems[2].id.description,
+            "description": feedItems[2].description!,
+            "imageURL": feedItems[2].imageURL.description,
+        ]
+        
+        let item4 = [
+            "id": feedItems[3].id.description,
+            "imageURL": feedItems[3].imageURL.description,
+        ]
+        
+        let validJSONData = try! JSONSerialization.data(withJSONObject: [
+            "items": [item1, item2, item3, item4]
+        ])
+        
+        // When
+        expect(sut, with: .success(feedItems)) {
+            // Then
+            client.complete(withStatusCode: 200, and: validJSONData)
+        }
     }
     
     // MARK: - Helper methods
