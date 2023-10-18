@@ -77,7 +77,6 @@ class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
-    
     func test_load_deliversErrorOn200HTTPResponseAndInvalidJSON() {
         // Given
         let (sut, client) = makeSUT()
