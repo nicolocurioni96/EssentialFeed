@@ -38,17 +38,32 @@ class URLSessionHTTPClientTests: XCTestCase {
         URLProtocolStub.stopInterceptingRequests()
     }
     
-    func test_getFromURL_failsOnRequestedURL() {
+    func test_getFromURL_performsGETRequestWithURL() {
+        let url = URL(string: "https://my-favorite-url.com")!
+        let expectation = XCTestExpectation(description: "Wait for request")
+        
+        URLProtocolStub.observeRequests { request in
+            XCTAssertEqual(request.httpMethod, "GET")
+            XCTAssertEqual(request.url, url)
+            expectation.fulfill()
+        }
+        
+        makeSUT().get(from: url) { _ in }
+        
+        wait(for: [expectation], timeout: 2.0)
+    }
+    
+    func test_getFromURL_failsOnRequestError() {
         // Given
-        let url = URL(string: "https://an-enjoyable-url.com")!
+        let url = URL(string: "https://a-test-url.com")!
         let error = NSError(domain: "Request Error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
         
         // When
         let sut = URLSessionHTTPClient()
-        let expectation = XCTestExpectation(description: "Expected to get response from GET methods")
+        let expectation = XCTestExpectation(description: "Expected to get response from GET method")
         
-        sut.get(from: url) { result in
+        makeSUT().get(from: url) { result in
             switch result {
             case let .failure(capturedError as NSError):
                 XCTAssertEqual(capturedError.domain, error.domain)
@@ -63,38 +78,11 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [expectation], timeout: 2.0)
     }
     
-    func test_getFromURL_performsGETRequestsWithURL() {
-        let url = URL(string: "https://my-favorite-url.com")!
-        let expectation = XCTestExpectation(description: "Wait for request")
-        
-        URLProtocolStub.observeRequests { request in
-            XCTAssertEqual(request.httpMethod, "GET")
-            XCTAssertEqual(request.url, url)
-            expectation.fulfill()
-        }
-        
-        URLSessionHTTPClient().get(from: url) { _ in }
-        
-        wait(for: [expectation], timeout: 2.0)
-    }
-    
-    func test_getFromURL_performsInterceptingRequests() {
-        let url = URL(string: "https://my-favorite-url.com")!
-        let expectation = XCTestExpectation(description: "Wait for request")
-        
-        URLProtocolStub.observeRequests { request in
-            XCTAssertEqual(request.httpMethod, "GET")
-            XCTAssertEqual(request.url, url)
-            
-            expectation.fulfill()
-        }
-        
-        URLSessionHTTPClient().get(from: url) { _ in }
-        
-        wait(for: [expectation], timeout: 2.0)
-    }
-    
     // MARK: - Helpers
+    private func makeSUT() -> URLSessionHTTPClient {
+        return URLSessionHTTPClient()
+    }
+    
     private class URLProtocolStub: URLProtocol {
         private static var stub: Stub?
         private static var requestObserver: ((URLRequest) -> Void)?
