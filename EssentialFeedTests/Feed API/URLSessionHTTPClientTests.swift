@@ -18,9 +18,11 @@ class URLSessionHTTPClient {
     private struct UnexpectedValuesRepresentation: Error { }
     
     func get(from url: URL, completion: @escaping (HTTPClientResponse) -> Void) {
-        session.dataTask(with: url, completionHandler: { _, _, error in
+        session.dataTask(with: url, completionHandler: { data, response, error in
             if let error {
                 completion(.failure(error))
+            } else if let data, data.count > 0, let response = response as? HTTPURLResponse {
+                completion(.success(response, data))
             } else {
                 completion(.failure(UnexpectedValuesRepresentation()))
             }
@@ -45,9 +47,9 @@ class URLSessionHTTPClientTests: XCTestCase {
         let url = anyURL()
         let expectation = XCTestExpectation(description: "Wait for request")
         
-        URLProtocolStub.observeRequests { request in
-            XCTAssertEqual(request.httpMethod, "GET")
-            XCTAssertEqual(request.url, url)
+        URLProtocolStub.observeRequests { result in
+            XCTAssertEqual(result.httpMethod, "GET")
+            XCTAssertEqual(result.url, url)
             expectation.fulfill()
         }
         
@@ -76,6 +78,29 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyURLResponse(), error: anyError()))
         XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyHTTPURLResponse(), error: anyError()))
         XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyURLResponse(), error: nil))
+    }
+    
+    func test_getFromURL_succeedOnAnyURLHTTPResponseWithData() {
+        let data = anyData()
+        let response = anyHTTPURLResponse()
+        let expectation = XCTestExpectation(description: "Wait for request")
+        
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        
+        makeSUT().get(from: anyURL()) { result in
+            switch result {
+            case let .success(retrievedResponse, retrievedData):
+                XCTAssertEqual(retrievedResponse.statusCode, response.statusCode)
+                XCTAssertEqual(retrievedResponse.url, response.url)
+                XCTAssertEqual(retrievedData, data)
+            case let .failure(error):
+                XCTFail("Expected success response \(response) with data \(data), got \(error) instead")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
     }
     
     // MARK: - Helpers
