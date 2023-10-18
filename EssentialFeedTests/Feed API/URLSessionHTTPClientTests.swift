@@ -58,7 +58,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_failsOnRequestError() {
         // Given
-        let requestError = NSError(domain: "An Error", code: 1)
+        let requestError = anyError()
         let receivedError = resultErrorFor(data: nil, response: nil, error: requestError) as NSError?
         
         XCTAssertEqual(receivedError?.domain, requestError.domain)
@@ -134,7 +134,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         "Any data".data(using: .utf8)!
     }
     
-    private func anyError() -> Error {
+    private func anyError() -> NSError {
         NSError(domain: "My Domain", code: 1)
     }
     
