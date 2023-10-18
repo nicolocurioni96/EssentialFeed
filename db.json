@@ -1,48 +1,50 @@
 {
-    "items": [
-        {
-            "id": "853DF947-A034-491B-BC0F-8E0E224A49E2",
-            "description": "Description 1",
-            "location": "Location 1",
-            "imageURL": "https://url-1.com",
-        },
-        {
-            "id": "BA473803-875A-4FB8-852F-A53D2BADC8BC",
-            "location": "Location 2",
-            "imageURL": "https://url-2.com",
-        },
-        {
-            "id": "93EED266-A585-4A38-A7C8-9035CEF0AF00",
-            "description": "Description 3",
-            "imageURL": "https://url-3.com",
-        },
-        {
-            "id": "094223AF-84DE-424D-809C-D2CCD2969BDD",
-            "imageURL": "https://url-4.com",
-        },
-        {
-            "id": "74C3E1B6-3999-4CCC-9472-00E7F68ECFA5",
-            "description": "Description 5",
-            "location": "Location 5",
-            "imageURL": "https://url-5.com",
-        },
-        {
-            "id": "1C2FFA4F-A465-4643-8B30-282A3B991F86",
-            "description": "Description 6",
-            "location": "Location 6",
-            "imageURL": "https://url-6.com",
-        },
-        {
-            "id": "6A629552-73A9-4E58-8185-FA2A45C37060",
-            "description": "Description 7",
-            "location": "Location 7",
-            "imageURL": "https://url-7.com",
-        },
-        {
-            "id": "29F4997F-2A53-4B9A-A705-416C6DD572AF",
-            "description": "Description 8",
-            "location": "Location 8",
-            "imageURL": "https://url-8.com",
-        },
-    ]
+    "response": {
+        "items": [
+            {
+                "id": "853DF947-A034-491B-BC0F-8E0E224A49E2",
+                "description": "Description 1",
+                "location": "Location 1",
+                "imageURL": "https://url-1.com",
+            },
+            {
+                "id": "BA473803-875A-4FB8-852F-A53D2BADC8BC",
+                "location": "Location 2",
+                "imageURL": "https://url-2.com",
+            },
+            {
+                "id": "93EED266-A585-4A38-A7C8-9035CEF0AF00",
+                "description": "Description 3",
+                "imageURL": "https://url-3.com",
+            },
+            {
+                "id": "094223AF-84DE-424D-809C-D2CCD2969BDD",
+                "imageURL": "https://url-4.com",
+            },
+            {
+                "id": "74C3E1B6-3999-4CCC-9472-00E7F68ECFA5",
+                "description": "Description 5",
+                "location": "Location 5",
+                "imageURL": "https://url-5.com",
+            },
+            {
+                "id": "1C2FFA4F-A465-4643-8B30-282A3B991F86",
+                "description": "Description 6",
+                "location": "Location 6",
+                "imageURL": "https://url-6.com",
+            },
+            {
+                "id": "6A629552-73A9-4E58-8185-FA2A45C37060",
+                "description": "Description 7",
+                "location": "Location 7",
+                "imageURL": "https://url-7.com",
+            },
+            {
+                "id": "29F4997F-2A53-4B9A-A705-416C6DD572AF",
+                "description": "Description 8",
+                "location": "Location 8",
+                "imageURL": "https://url-8.com",
+            },
+        ]
+    }
 }
