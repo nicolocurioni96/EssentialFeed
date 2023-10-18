@@ -65,8 +65,17 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(receivedError?.code, requestError.code)
     }
     
-    func test_getFromURL_failsOnRequestAllNilValues() {
+    func test_getFromURL_failsOnRequestAllInvalidRepresentationCases() {
         XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyURLResponse(), error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPURLResponse(), error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: nil, error: anyError()))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyURLResponse(), error: anyError()))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPURLResponse(), error: anyError()))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyURLResponse(), error: anyError()))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyHTTPURLResponse(), error: anyError()))
+        XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyURLResponse(), error: nil))
     }
     
     // MARK: - Helpers
@@ -103,6 +112,30 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [expectation], timeout: 2.0)
         
         return capturedError
+    }
+    
+    private func anyURLResponse() -> URLResponse {
+        URLResponse(
+            url: anyURL(),
+            mimeType: nil,
+            expectedContentLength: 1,
+            textEncodingName: nil)
+    }
+    
+    private func anyHTTPURLResponse() -> HTTPURLResponse {
+        HTTPURLResponse(
+            url: anyURL(),
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil)!
+    }
+    
+    private func anyData() -> Data {
+        "Any data".data(using: .utf8)!
+    }
+    
+    private func anyError() -> Error {
+        NSError(domain: "My Domain", code: 1)
     }
     
     private class URLProtocolStub: URLProtocol {
