@@ -78,7 +78,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(retrievedvalues?.data, emptyData)
     }
     
-    // MARK: - Helpers
+    // MARK: - Helper methods
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
         let sut = URLSessionHTTPClient()
         trackForMemoryLeaks(sut, file: file, line: line)
