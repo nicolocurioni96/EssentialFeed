@@ -93,7 +93,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
     
     private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> LoadFeedResult? {
-        let url = URL(string: "https://localhost:3000/response")!
+        let url = URL(string: "https://my-json-server.typicode.com/nicolocurioni96/EssentialFeed/response")!
         let client = URLSessionHTTPClient()
         let loader = RemoteFeedLoader(client: client, url: url)
         let expectation = expectation(description: "Wait for load completion")
