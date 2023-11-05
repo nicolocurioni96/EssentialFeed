@@ -11,17 +11,17 @@ import EssentialFeed
 final class EssentialFeedAPIEndToEndTests: XCTestCase {
     func test_endToEndTestServerGETFeedResult_MatchesFixedTestAccountData() {
         switch getFeedResult() {
-        case let .success(items):
-            XCTAssertEqual(items.count, 8, "Expected 8 items in the test account feed")
+        case let .success(imageFeed):
+            XCTAssertEqual(imageFeed.count, 8, "Expected 8 items in the test account feed")
             
-            XCTAssertEqual(items[0], expectedItem(at: 0))
-            XCTAssertEqual(items[1], expectedItem(at: 1))
-            XCTAssertEqual(items[2], expectedItem(at: 2))
-            XCTAssertEqual(items[3], expectedItem(at: 3))
-            XCTAssertEqual(items[4], expectedItem(at: 4))
-            XCTAssertEqual(items[5], expectedItem(at: 5))
-            XCTAssertEqual(items[6], expectedItem(at: 6))
-            XCTAssertEqual(items[7], expectedItem(at: 7))
+            XCTAssertEqual(imageFeed[0], expectedImage(at: 0))
+            XCTAssertEqual(imageFeed[1], expectedImage(at: 1))
+            XCTAssertEqual(imageFeed[2], expectedImage(at: 2))
+            XCTAssertEqual(imageFeed[3], expectedImage(at: 3))
+            XCTAssertEqual(imageFeed[4], expectedImage(at: 4))
+            XCTAssertEqual(imageFeed[5], expectedImage(at: 5))
+            XCTAssertEqual(imageFeed[6], expectedImage(at: 6))
+            XCTAssertEqual(imageFeed[7], expectedImage(at: 7))
         case let .failure(error):
             XCTFail("Expected successful feed results, got failure with error \(error) instead")
         case .none:
@@ -30,12 +30,12 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
     
     // MARK: - Helper methods
-    private func expectedItem(at index: Int) -> FeedItem {
-        FeedItem(
+    private func expectedImage(at index: Int) -> FeedImage {
+        FeedImage(
             id: expectedID(at: index),
             description: expectedDescription(at: index),
             location: expectedLocation(at: index),
-            imageURL: expectedURL(at: index))
+            url: imageURL(at: index))
     }
     
     private func expectedID(at index: Int) -> UUID {
@@ -78,18 +78,8 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
         ][index]
     }
     
-    private func expectedURL(at index: Int) -> URL {
-        URL(
-            string: [
-                "https://url-1.com",
-                "https://url-2.com",
-                "https://url-3.com",
-                "https://url-4.com",
-                "https://url-5.com",
-                "https://url-6.com",
-                "https://url-7.com",
-                "https://url-8.com",
-            ][index])!
+    private func imageURL(at index: Int) -> URL {
+        return URL(string: "https://url-\(index+1).com")!
     }
     
     private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> LoadFeedResult? {
