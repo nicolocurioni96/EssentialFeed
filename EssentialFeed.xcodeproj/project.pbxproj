@@ -226,9 +226,9 @@
 		AFF7FDAE2AE43FB7005D1D98 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				AFA385392AFC315F00F59F9B /* Helpers */,
 				AFF7FDAF2AE43FDE005D1D98 /* CacheFeedUseCaseTests.swift */,
 				AFA385352AFC28F800F59F9B /* ValidateFeedCacheUseCaseTests.swift */,
-				AFA385392AFC315F00F59F9B /* Helpers */,
 				AFA3853F2AFC459000F59F9B /* CodableFeedStoreTests.swift */,
 				AFE056B32B5C842C0024CEF7 /* CodableFeedStore.swift */,
 			);
