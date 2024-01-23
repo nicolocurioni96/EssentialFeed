@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-extension FeedStoreSepcs where Self: XCTestCase {
+extension FeedStoreSpecs where Self: XCTestCase {
     func assertThatRetrieveDeliversEmptyOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
         expect(sut, toRetrieve: .empty, file: file, line: line)
     }
@@ -114,7 +114,7 @@ extension FeedStoreSepcs where Self: XCTestCase {
     }
 }
 
-extension FeedStoreSepcs where Self: XCTestCase {
+extension FeedStoreSpecs where Self: XCTestCase {
     @discardableResult
     func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache insertion")
