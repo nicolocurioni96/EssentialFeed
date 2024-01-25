@@ -9,7 +9,6 @@ import XCTest
 import EssentialFeed
 
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
-    
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
         
@@ -47,7 +46,9 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
         
+        assertThatInsertOverridesPreviouslyInsertedCacheValues(on: sut)
     }
     
     func test_delete_deliversNoErrorOnEmptyCache() {
@@ -70,14 +71,13 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
     }
     
-    // MARK: - Helpers
+    // - MARK: Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> FeedStore {
         let storeBundle = Bundle(for: CoreDataFeedStore.self)
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataFeedStore(storeURL: storeURL, bundle: storeBundle)
         
         trackForMemoryLeaks(sut, file: file, line: line)
-        
         return sut
     }
 }

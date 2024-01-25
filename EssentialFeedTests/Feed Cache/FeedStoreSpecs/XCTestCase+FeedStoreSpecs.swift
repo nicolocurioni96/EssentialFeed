@@ -123,9 +123,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
             insertionError = receivedInsertionError
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
-        
         return insertionError
     }
     
@@ -133,15 +131,17 @@ extension FeedStoreSpecs where Self: XCTestCase {
     func deleteCache(from sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache deletion")
         var deletionError: Error?
-        
         sut.deleteCachedFeed { receivedDeletionError in
             deletionError = receivedDeletionError
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
-        
         return deletionError
+    }
+    
+    func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
     
     func expect(_ sut: FeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
@@ -166,9 +166,5 @@ extension FeedStoreSpecs where Self: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
     }
-    
-    func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
-    }
 }
+

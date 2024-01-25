@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import EssentialFeed
 
 public class CodableFeedStore: FeedStore {
     private struct Cache: Codable {
