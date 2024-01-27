@@ -17,8 +17,6 @@ public final class CoreDataFeedStore: FeedStore {
     }
     
     public func retrieve(completion: @escaping RetrievalCompletion) {
-        let context = self.context
-        
         perform { context in
             do {
                 if let cache = try ManagedCache.find(in: context) {
