@@ -1,5 +1,5 @@
 //
-//  RemoteFeedLoaderTests.swift
+//  LoadFeedFromRemoteUseCaseTests.swift
 //  EssentialFeedTests
 //
 //  Created by Nicolò Curioni  on 08/10/23.
@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-class RemoteFeedLoaderTests: XCTestCase {
+class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         // Given
         let (_, client) = makeSUT(url: URL(string: "https://an-amazing-url.com")!)
@@ -123,13 +123,13 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         
         
-        let feedItems = [item1, item2, item3, item4]
+        let items = [item1.model, item2.model, item3.model, item4.model]
         
         // When
-        expect(sut, with: .success(feedItems.map { $0.model })) {
+        expect(sut, with: .success(items)) {
             // Then
-            let JSONData = try! makeJSONItem(feedItems.map { $0.json })
-            client.complete(withStatusCode: 200, and: JSONData)
+            let json = try! makeJSONItem([item1.json, item2.json, item3.json, item4.json])
+            client.complete(withStatusCode: 200, and: json)
         }
     }
     
@@ -168,32 +168,35 @@ class RemoteFeedLoaderTests: XCTestCase {
             switch (receivedResult, expectedResult) {
             case let (.success(receivedItems), .success(expectedItems)):
                 XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                
             case let (.failure(receivedError as RemoteFeedLoader.Error), .failure(expectedError as RemoteFeedLoader.Error)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
             default:
-                XCTFail("Expected result: \(expectedResult) got \(receivedResult) instead")
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
             }
             
             expectation.fulfill()
         }
         
         action()
-        wait(for: [expectation], timeout: 3.0)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
     
-    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
-        let feedItem = FeedItem(id: id,
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedImage, json: [String: Any]) {
+        let feedImage = FeedImage(id: id,
                                 description: description,
                                 location: location,
-                                imageURL: imageURL)
+                                url: imageURL)
         let json = [
             "id": id.description,
             "description": description,
             "location": location,
-            "imageURL": imageURL.description
+            "image": imageURL.absoluteString
         ].compactMapValues { $0 }
         
-        return (model: feedItem, json: json)
+        return (model: feedImage, json: json)
     }
     
     private func makeJSONItem(_ items: [[String: Any]]) throws -> Data {
@@ -209,10 +212,10 @@ class RemoteFeedLoaderTests: XCTestCase {
 private class HTTPClientSpy: HTTPClient {
     init() {}
     
-    var messages: [(url: URL, completion: (HTTPClientResponse) -> Void)] = []
+    var messages: [(url: URL, completion: (HTTPClient.Result) -> Void)] = []
     var requestedURLs: [URL]{ self.messages.map { $0.url } }
     
-    func get(from url: URL, completion: @escaping (HTTPClientResponse) -> Void) {
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
         self.messages.append((url: url, completion: completion))
     }
     
@@ -226,7 +229,7 @@ private class HTTPClientSpy: HTTPClient {
                                            httpVersion: nil,
                                            headerFields: nil)!
         
-        messages[index].completion(.success(httpResponse, data))
+        messages[index].completion(.success((httpResponse, data)))
     }
 }
 
