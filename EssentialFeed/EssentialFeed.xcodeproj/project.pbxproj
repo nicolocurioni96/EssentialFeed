@@ -104,6 +104,7 @@
 		AF57BCA82B73BA1800B03F9E /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "XCTestCase+FailableDeleteFeedStoreSpecs.swift"; path = "../../../../EssentialFeedTests/Feed Cache/FeedStoreSpecs/XCTestCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		AF57BCA92B73BA1800B03F9E /* FeedStoreSepcs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedStoreSepcs.swift; path = "../../../../EssentialFeedTests/Feed Cache/FeedStoreSpecs/FeedStoreSepcs.swift"; sourceTree = "<group>"; };
 		AF57BCB02B73BA2F00B03F9E /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedCacheTestHelpers.swift; path = "../../../../EssentialFeedTests/Feed Cache/Helpers/FeedCacheTestHelpers.swift"; sourceTree = "<group>"; };
+		AF57BCB92B73C60700B03F9E /* EssentialFeedAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = EssentialFeedAPIEndToEndTests.xctestplan; path = ../EssentialFeedAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		AF61DBEA2AE0894C00717A7C /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		AF61DBEE2AE08FBE00717A7C /* db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
 		AF61DBF42AE0914600717A7C /* EssentialFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +158,7 @@
 		A119527927BEE729008C6645 = {
 			isa = PBXGroup;
 			children = (
+				AF57BCB92B73C60700B03F9E /* EssentialFeedAPIEndToEndTests.xctestplan */,
 				AF57BC7C2B73B7F600B03F9E /* CI.xctestplan */,
 				AF61DBEE2AE08FBE00717A7C /* db.json */,
 				A119528527BEE72A008C6645 /* EssentialFeed */,
@@ -804,6 +806,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
@@ -822,6 +825,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
