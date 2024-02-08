@@ -59,6 +59,8 @@
 		AFFD516B2B7518530087B77C /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF63FAD2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		AFFD516D2B7523750087B77C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516C2B7523750087B77C /* FeedViewController.swift */; };
 		AFFD516E2B7523750087B77C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516C2B7523750087B77C /* FeedViewController.swift */; };
+		AFFD51702B7534980087B77C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516F2B7534980087B77C /* FeedImageCell.swift */; };
+		AFFD51712B7534980087B77C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516F2B7534980087B77C /* FeedImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,7 @@
 		AFFD51612B7509CE0087B77C /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI_iOS.xctestplan; path = ../CI_iOS.xctestplan; sourceTree = "<group>"; };
 		AFFD51622B7513920087B77C /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		AFFD516C2B7523750087B77C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		AFFD516F2B7534980087B77C /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,7 @@
 			children = (
 				AF57BCC32B7503C400B03F9E /* EssentialFeediOS.docc */,
 				AFFD516C2B7523750087B77C /* FeedViewController.swift */,
+				AFFD516F2B7534980087B77C /* FeedImageCell.swift */,
 			);
 			path = EssentialFeediOS;
 			sourceTree = "<group>";
@@ -689,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFD516D2B7523750087B77C /* FeedViewController.swift in Sources */,
+				AFFD51702B7534980087B77C /* FeedImageCell.swift in Sources */,
 				AF57BCC42B7503C400B03F9E /* EssentialFeediOS.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFD51642B7513920087B77C /* FeedViewControllerTests.swift in Sources */,
+				AFFD51712B7534980087B77C /* FeedImageCell.swift in Sources */,
 				AFFD516E2B7523750087B77C /* FeedViewController.swift in Sources */,
 				AFFD516B2B7518530087B77C /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */,
 			);
