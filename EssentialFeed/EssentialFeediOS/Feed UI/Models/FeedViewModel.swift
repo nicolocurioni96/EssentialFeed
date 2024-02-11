@@ -26,7 +26,6 @@ final class FeedViewModel {
             if let feed = try? result.get() {
                 self?.onFeedLoad?(feed)
             }
-            
             self?.onLoadingStateChange?(false)
         }
     }
