@@ -54,6 +54,8 @@
 		AFDBBD872B656C3700F75F81 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A119528327BEE72A008C6645 /* EssentialFeed.framework */; };
 		AFDBBD8D2B657E3B00F75F81 /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF63FAD2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		AFDBBD8F2B65825E00F75F81 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA3853A2AFC319200F59F9B /* SharedTestHelpers.swift */; };
+		AFDC137E2B7F9A1000F85330 /* FeedLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC137D2B7F9A1000F85330 /* FeedLoadingViewModel.swift */; };
+		AFDC13802B7F9A4700F85330 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC137F2B7F9A4700F85330 /* FeedViewModel.swift */; };
 		AFF63FAE2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF63FAD2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		AFF823EF2B793BF40047A364 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF823EE2B793BF40047A364 /* FeedImageDataLoader.swift */; };
 		AFF823F42B793E3C0047A364 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF823F32B793E3C0047A364 /* FeedRefreshViewController.swift */; };
@@ -153,6 +155,8 @@
 		AFD0DC9B2B77D9EA00A12387 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		AFD2A11C2B7E345E0060A934 /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
 		AFDBBD832B656C3700F75F81 /* EssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFDC137D2B7F9A1000F85330 /* FeedLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadingViewModel.swift; sourceTree = "<group>"; };
+		AFDC137F2B7F9A4700F85330 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		AFF63FAD2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTrackingHelper.swift"; sourceTree = "<group>"; };
 		AFF823EE2B793BF40047A364 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		AFF823F32B793E3C0047A364 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 				AFF823FD2B7986940047A364 /* FeedImageViewModel.swift */,
 				AFF824002B798F070047A364 /* FeedPresenter.swift */,
 				AFD2A11C2B7E345E0060A934 /* FeedImagePresenter.swift */,
+				AFDC137D2B7F9A1000F85330 /* FeedLoadingViewModel.swift */,
+				AFDC137F2B7F9A4700F85330 /* FeedViewModel.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -753,10 +759,12 @@
 				AFF823FE2B7986940047A364 /* FeedImageViewModel.swift in Sources */,
 				AFF823F62B7942620047A364 /* FeedImageCellController.swift in Sources */,
 				AFD2A11D2B7E345E0060A934 /* FeedImagePresenter.swift in Sources */,
+				AFDC137E2B7F9A1000F85330 /* FeedLoadingViewModel.swift in Sources */,
 				AFD0DC9C2B77D9EA00A12387 /* UIView+Shimmering.swift in Sources */,
 				AFFD51702B7534980087B77C /* FeedImageCell.swift in Sources */,
 				AF57BCC42B7503C400B03F9E /* EssentialFeediOS.docc in Sources */,
 				AFF824012B798F070047A364 /* FeedPresenter.swift in Sources */,
+				AFDC13802B7F9A4700F85330 /* FeedViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
