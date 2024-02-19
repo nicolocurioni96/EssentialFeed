@@ -14,6 +14,7 @@ protocol FeedLoadingView {
 protocol FeedView {
     func display(_ viewModel: FeedViewModel)
 }
+
 final class FeedPresenter {
     private let feedView: FeedView
     private let loadingView: FeedLoadingView
@@ -21,6 +22,10 @@ final class FeedPresenter {
     init(feedView: FeedView, loadingView: FeedLoadingView) {
         self.feedView = feedView
         self.loadingView = loadingView
+    }
+    
+    static var title: String {
+        return "My Feed"
     }
     
     func didStartLoadingFeed() {
