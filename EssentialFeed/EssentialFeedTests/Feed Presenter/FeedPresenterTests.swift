@@ -30,6 +30,10 @@ struct FeedErrorViewModel {
     static var noError: FeedErrorViewModel {
         return FeedErrorViewModel(message: nil)
     }
+    
+    static func error(message: String) -> FeedErrorViewModel {
+        return FeedErrorViewModel(message: message)
+    }
 }
 
 protocol FeedErrorView {
@@ -73,8 +77,9 @@ final class FeedPresenter {
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
     
-    func didFinishLoadingFeed(with error: Error?) {
-        
+    func didFinishLoadingFeed(with error: Error) {
+        errorView.display(.error(message: feedLoadError))
+        loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
 }
 
