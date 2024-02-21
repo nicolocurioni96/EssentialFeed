@@ -1,14 +1,25 @@
 //
-//  FeedImagePresenter.swift
+//  FeedImageViewModel.swift
 //  EssentialFeediOS
 //
-//  Created by Nicolò Curioni  on 15/02/24.
+//  Created by Nicolò Curioni  on 11/02/24.
 //
 
 import Foundation
-import EssentialFeed
 
-protocol FeedImageView {
+public struct FeedImageViewModel<Image> {
+    public let description: String?
+    public let location: String?
+    public let image: Image?
+    public let isLoading: Bool
+    public let shouldRetry: Bool
+    
+    public var hasLocation: Bool {
+        return location != nil
+    }
+}
+
+public protocol FeedImageView {
     associatedtype Image
     
     func display(_ model: FeedImageViewModel<Image>)
