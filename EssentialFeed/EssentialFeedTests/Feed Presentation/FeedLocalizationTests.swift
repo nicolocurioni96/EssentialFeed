@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import EssentialFeediOS
+import EssentialFeed
 
 final class FeedLocalizationTests: XCTestCase {
     
@@ -30,13 +30,15 @@ final class FeedLocalizationTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
     private typealias LocalizedBundle = (bundle: Bundle, localization: String)
     
     private func allLocalizationBundles(in bundle: Bundle, file: StaticString = #file, line: UInt = #line) -> [LocalizedBundle] {
         return bundle.localizations.compactMap { localization in
             guard
                 let path = bundle.path(forResource: localization, ofType: "lproj"),
-                let localizedBundle = Bundle(path: path) else {
+                let localizedBundle = Bundle(path: path)
+            else {
                 XCTFail("Couldn't find bundle for localization: \(localization)", file: file, line: line)
                 return nil
             }
@@ -50,7 +52,8 @@ final class FeedLocalizationTests: XCTestCase {
             guard
                 let path = current.bundle.path(forResource: table, ofType: "strings"),
                 let strings = NSDictionary(contentsOfFile: path),
-                let keys = strings.allKeys as? [String] else {
+                let keys = strings.allKeys as? [String]
+            else {
                 XCTFail("Couldn't load localized strings for localization: \(current.localization)", file: file, line: line)
                 return acc
             }
