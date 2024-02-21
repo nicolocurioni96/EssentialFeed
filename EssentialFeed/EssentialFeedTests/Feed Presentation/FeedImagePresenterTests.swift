@@ -16,6 +16,21 @@ class FeedImagePresenterTests: XCTestCase {
         XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
     }
     
+    func test_didStartLoadingImageData_displaysLoadingImage() {
+        let (sut, view) = makeSUT()
+        let image = uniqueImage()
+        
+        sut.didStartLoadingImageData(for: image)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.description, image.description)
+        XCTAssertEqual(message?.location, image.location)
+        XCTAssertEqual(message?.isLoading, true)
+        XCTAssertEqual(message?.shouldRetry, false)
+        XCTAssertNil(message?.image)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
