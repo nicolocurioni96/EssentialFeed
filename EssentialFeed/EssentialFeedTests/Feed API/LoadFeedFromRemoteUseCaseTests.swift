@@ -150,7 +150,8 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         
     }
     
-    // MARK: - Helper methods
+    // MARK: - Helpers
+    
     private func makeSUT(url: URL = URL(string: "https://another-amazing-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(client: client, url: url)
@@ -212,11 +213,17 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 private class HTTPClientSpy: HTTPClient {
     init() {}
     
+    private struct Task: HTTPClientTask {
+        func cancel() { }
+    }
+    
     var messages: [(url: URL, completion: (HTTPClient.Result) -> Void)] = []
     var requestedURLs: [URL]{ self.messages.map { $0.url } }
     
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
-        self.messages.append((url: url, completion: completion))
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
+        messages.append((url: url, completion: completion))
+        
+        return Task()
     }
     
     func complete(with error: Error, at index: Int = 0) {
