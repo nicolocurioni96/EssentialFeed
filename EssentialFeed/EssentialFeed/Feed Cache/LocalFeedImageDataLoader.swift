@@ -14,8 +14,6 @@ public final class LocalFeedImageDataLoader: FeedImageDataLoader {
         self.store = store
     }
     
-    
-    
     public enum Error: Swift.Error {
         case failed
         case notFound
@@ -39,6 +37,12 @@ public final class LocalFeedImageDataLoader: FeedImageDataLoader {
         private func preventFurtherCompletions() {
             completion = nil
         }
+    }
+    
+    public typealias SaveResult = Result<Void, Swift.Error>
+    
+    public func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
+        store.insert(data, for: url) { _ in }
     }
     
     public func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
