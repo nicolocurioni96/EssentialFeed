@@ -73,19 +73,27 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let deletionError = anyNSError()
         
-        expect(sut, toCompleteWith: .failure(deletionError)) {
+        expect(sut, toCompleteWith: .failure(deletionError), when: {
             store.completeRetrieval(with: anyNSError())
             store.completeDeletion(with: deletionError)
-        }
+        })
     }
     
     func test_validateCache_succeedsOnSuccessfulDeletionOfFailedRetrieval() {
         let (sut, store) = makeSUT()
         
-        expect(sut, toCompleteWith: .success(())) {
+        expect(sut, toCompleteWith: .success(()), when: {
             store.completeRetrieval(with: anyNSError())
             store.completeDeletionSuccessfully()
-        }
+        })
+    }
+    
+    func test_validateCache_succeedsOnEmptyCache() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeRetrievalWithEmptyCache()
+        })
     }
     
     func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
@@ -96,7 +104,10 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         
         sut = nil
         store.completeRetrieval(with: anyNSError())
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
+
     
     // MARK: - Helpers
     
@@ -105,7 +116,6 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         let sut = LocalFeedLoader(store: store, currentDate: currentDate)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
-        
         return (sut, store)
     }
     
