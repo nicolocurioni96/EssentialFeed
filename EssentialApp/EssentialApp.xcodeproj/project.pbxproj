@@ -21,6 +21,7 @@
 		AFD157612B951DED008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD157602B951DED008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift */; };
 		AFD157622B951E16008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD157602B951DED008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift */; };
 		AFD157652B951E73008D3FBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD157642B951E73008D3FBF /* XCTestCase+MemoryLeakTracking.swift */; };
+		AFD157672B951EF3008D3FBF /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD157662B951EF3008D3FBF /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AFD1575E2B94F84F008D3FBF /* FeedImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		AFD157602B951DED008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		AFD157642B951E73008D3FBF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		AFD157662B951EF3008D3FBF /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				AFD157642B951E73008D3FBF /* XCTestCase+MemoryLeakTracking.swift */,
+				AFD157662B951EF3008D3FBF /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			files = (
 				AFD1575F2B94F84F008D3FBF /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				AFD157582B94F0DC008D3FBF /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
+				AFD157672B951EF3008D3FBF /* SharedTestHelpers.swift in Sources */,
 				AFD1575D2B94F807008D3FBF /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				AF34EF8E2B94F078006DD458 /* EssentialAppTests.swift in Sources */,
 				AFD157622B951E16008D3FBF /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */,
