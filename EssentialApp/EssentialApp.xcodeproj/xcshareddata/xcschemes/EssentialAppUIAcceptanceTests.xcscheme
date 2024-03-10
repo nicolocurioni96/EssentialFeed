@@ -21,7 +21,7 @@
                BlueprintIdentifier = "AFCCFEB82B9E22C500F36075"
                BuildableName = "EssentialAppUIAcceptanceTests.xctest"
                BlueprintName = "EssentialAppUIAcceptanceTests"
-               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

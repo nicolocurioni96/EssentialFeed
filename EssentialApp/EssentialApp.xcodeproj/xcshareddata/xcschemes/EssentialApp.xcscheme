@@ -17,7 +17,7 @@
                BlueprintIdentifier = "AF34EF722B94F077006DD458"
                BuildableName = "EssentialApp.app"
                BlueprintName = "EssentialApp"
-               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "AF34EF882B94F078006DD458"
                BuildableName = "EssentialAppTests.xctest"
                BlueprintName = "EssentialAppTests"
-               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -48,7 +48,7 @@
                BlueprintIdentifier = "AFCCFEB82B9E22C500F36075"
                BuildableName = "EssentialAppUIAcceptanceTests.xctest"
                BlueprintName = "EssentialAppUIAcceptanceTests"
-               ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -70,7 +70,7 @@
             BlueprintIdentifier = "AF34EF722B94F077006DD458"
             BuildableName = "EssentialApp.app"
             BlueprintName = "EssentialApp"
-            ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+            ReferencedContainer = "container:EssentialApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -87,7 +87,7 @@
             BlueprintIdentifier = "AF34EF722B94F077006DD458"
             BuildableName = "EssentialApp.app"
             BlueprintName = "EssentialApp"
-            ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
+            ReferencedContainer = "container:EssentialApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

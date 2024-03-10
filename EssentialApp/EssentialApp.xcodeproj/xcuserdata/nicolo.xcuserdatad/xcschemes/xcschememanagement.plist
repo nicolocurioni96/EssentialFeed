@@ -3,7 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>CI_iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>EssentialApp.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>EssentialAppUIAcceptanceTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>AF34EF722B94F077006DD458</key>
