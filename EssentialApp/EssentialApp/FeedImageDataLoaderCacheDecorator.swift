@@ -8,11 +8,11 @@
 import Foundation
 import EssentialFeed
 
-public class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
+public final class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
     private let decoratee: FeedImageDataLoader
     private let cache: FeedImageDataCache
-    
-    public init(decoratee: FeedImageDataLoader, cache: FeedImageDataCache){
+
+    public init(decoratee: FeedImageDataLoader, cache: FeedImageDataCache) {
         self.decoratee = decoratee
         self.cache = cache
     }
@@ -21,7 +21,6 @@ public class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
         return decoratee.loadImageData(from: url) { [weak self] result in
             completion(result.map { data in
                 self?.cache.saveIgnoringResult(data, for: url)
-                
                 return data
             })
         }

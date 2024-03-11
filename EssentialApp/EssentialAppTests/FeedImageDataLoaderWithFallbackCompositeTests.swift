@@ -7,6 +7,7 @@
 
 import XCTest
 import EssentialFeed
+import EssentialApp
 
 class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase, FeedImageDataLoaderTestCase {
     func test_init_doesNotLoadImageData() {
