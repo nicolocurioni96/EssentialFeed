@@ -20,7 +20,6 @@ public final class FeedLoaderCacheDecorator: FeedLoader {
         decoratee.load { [weak self] result in
             completion(result.map { feed in
                 self?.cache.saveIgnoringResult(feed)
-                
                 return feed
             })
         }

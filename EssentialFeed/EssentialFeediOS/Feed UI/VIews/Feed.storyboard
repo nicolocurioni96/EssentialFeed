@@ -91,6 +91,9 @@ Location</string>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gY6-U7-ayu">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="feed-image-view">
+                                                                <bool key="isElement" value="YES"/>
+                                                            </accessibility>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upj-DQ-8fq">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
@@ -143,6 +146,9 @@ Location</string>
                                         <constraint firstAttribute="trailingMargin" secondItem="UaV-MD-3hX" secondAttribute="trailing" id="hLr-HC-mYs"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="kGo-ZR-aTZ" id="zxt-Z0-SUD"/>
                                     <outlet property="feedImageContainer" destination="TnD-fv-rtw" id="oe3-XZ-sYv"/>
