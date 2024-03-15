@@ -47,7 +47,6 @@ private class DebuggingHTTPClient: HTTPClient {
         default:
             completion(.failure(NSError(domain: "offline", code: 0)))
         }
-        
         return Task()
     }
     
@@ -84,5 +83,4 @@ private class DebuggingHTTPClient: HTTPClient {
         ]])
     }
 }
-
 #endif
