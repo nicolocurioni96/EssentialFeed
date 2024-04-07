@@ -424,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				AF57BCC32B7503C400B03F9E /* EssentialFeediOS.docc */,
-				AFF823ED2B793BD90047A364 /* Feed Image Loader */,
 				AFF823F02B793C150047A364 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -517,13 +516,6 @@
 				AFE4A3472B8764A4003DB593 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
-			sourceTree = "<group>";
-		};
-		AFF823ED2B793BD90047A364 /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Feed Image Loader";
 			sourceTree = "<group>";
 		};
 		AFF823F02B793C150047A364 /* Feed UI */ = {
