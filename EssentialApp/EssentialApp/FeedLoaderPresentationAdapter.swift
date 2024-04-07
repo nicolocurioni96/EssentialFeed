@@ -1,11 +1,12 @@
 //
 //  FeedLoaderPresentationAdapter.swift
-//  EssentialFeediOS
+//  EssentialApp
 //
-//  Created by Nicolò Curioni  on 19/02/24.
+//  Created by Nicolò Curioni on 07/04/24.
 //
 
 import EssentialFeed
+import EssentialFeediOS
 
 final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: FeedLoader
@@ -22,6 +23,7 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
             switch result {
             case let .success(feed):
                 self?.presenter?.didFinishLoadingFeed(with: feed)
+                
             case let .failure(error):
                 self?.presenter?.didFinishLoadingFeed(with: error)
             }

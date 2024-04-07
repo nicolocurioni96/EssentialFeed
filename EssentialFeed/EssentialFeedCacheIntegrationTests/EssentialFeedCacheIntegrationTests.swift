@@ -2,14 +2,14 @@
 //  EssentialFeedCacheIntegrationTests.swift
 //  EssentialFeedCacheIntegrationTests
 //
-//  Created by Nicolò Curioni  on 27/01/24.
+//  Created by Nicolò Curioni on 07/04/24.
 //
 
 import XCTest
 import EssentialFeed
 
-final class EssentialFeedCacheIntegrationTests: XCTestCase {
-    
+class EssentialFeedCacheIntegrationTests: XCTestCase {
+
     override func setUp() {
         super.setUp()
         
@@ -23,10 +23,10 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
     }
     
     // MARK: - LocalFeedLoader Tests
-    
+
     func test_loadFeed_deliversNoItemsOnEmptyCache() {
         let feedLoader = makeFeedLoader()
-        
+
         expect(feedLoader, toLoad: [])
     }
     
@@ -36,7 +36,7 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         let feed = uniqueImageFeed().models
         
         save(feed, with: feedLoaderToPerformSave)
-        
+
         expect(feedLoaderToPerformLoad, toLoad: feed)
     }
     
@@ -49,7 +49,7 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         
         save(firstFeed, with: feedLoaderToPerformFirstSave)
         save(latestFeed, with: feedLoaderToPerformLastSave)
-        
+
         expect(feedLoaderToPerformLoad, toLoad: latestFeed)
     }
     
@@ -71,10 +71,10 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         
         save(feed, with: feedLoaderToPerformSave)
         validateCache(with: feedLoaderToPerformValidation)
-        
+
         expect(feedLoaderToPerformSave, toLoad: [])
     }
-    
+
     // MARK: - LocalFeedImageDataLoader Tests
     
     func test_loadImageData_deliversSavedDataOnASeparateInstance() {
@@ -102,20 +102,18 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         save([image], with: feedLoader)
         save(firstImageData, for: image.url, with: imageLoaderToPerformFirstSave)
         save(lastImageData, for: image.url, with: imageLoaderToPerformLastSave)
-        
+
         expect(imageLoaderToPerformLoad, toLoad: lastImageData, for: image.url)
     }
-    
+
     // MARK: - Helpers
     
     private func makeFeedLoader(currentDate: Date = Date(), file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
         let storeURL = testSpecificStoreURL()
         let store = try! CoreDataFeedStore(storeURL: storeURL)
         let sut = LocalFeedLoader(store: store, currentDate: { currentDate })
-        
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
-        
         return sut
     }
     
@@ -125,27 +123,33 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         let sut = LocalFeedImageDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
-        
         return sut
     }
     
     private func save(_ feed: [FeedImage], with loader: LocalFeedLoader, file: StaticString = #file, line: UInt = #line) {
-        let saveExp = expectation(description: "Wait to save completion")
-        
+        let saveExp = expectation(description: "Wait for save completion")
         loader.save(feed) { result in
             if case let Result.failure(error) = result {
                 XCTFail("Expected to save feed successfully, got error: \(error)", file: file, line: line)
             }
-            
             saveExp.fulfill()
         }
-        
         wait(for: [saveExp], timeout: 1.0)
     }
     
+    private func validateCache(with loader: LocalFeedLoader, file: StaticString = #file, line: UInt = #line) {
+        let saveExp = expectation(description: "Wait for save completion")
+        loader.validateCache() { result in
+            if case let Result.failure(error) = result {
+                XCTFail("Expected to validate feed successfully, got error: \(error)", file: file, line: line)
+            }
+            saveExp.fulfill()
+        }
+        wait(for: [saveExp], timeout: 1.0)
+    }
+
     private func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
-        
         sut.load { result in
             switch result {
             case let .success(loadedFeed):
@@ -157,7 +161,6 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
             
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
     }
     
@@ -167,10 +170,8 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
             if case let Result.failure(error) = result {
                 XCTFail("Expected to save image data successfully, got error: \(error)", file: file, line: line)
             }
-            
             saveExp.fulfill()
         }
-        
         wait(for: [saveExp], timeout: 1.0)
     }
     
@@ -187,29 +188,7 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
             
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private func validateCache(with loader: LocalFeedLoader, file: StaticString = #file, line: UInt = #line) {
-        let saveExp = expectation(description: "Wait for save completion")
-        loader.validateCache() { result in
-            if case let Result.failure(error) = result {
-                XCTFail("Expected to validate feed successfully, got error: \(error)", file: file, line: line)
-            }
-            
-            saveExp.fulfill()
-        }
-        
-        wait(for: [saveExp], timeout: 1.0)
-    }
-    
-    private func testSpecificStoreURL() -> URL {
-        return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
-    }
-    
-    private func cachesDirectory() -> URL {
-        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     
     private func setupEmptyStoreState() {
@@ -223,4 +202,13 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
     private func deleteStoreArtifacts() {
         try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
+    
+    private func testSpecificStoreURL() -> URL {
+        return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
+    }
+    
+    private func cachesDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+
 }

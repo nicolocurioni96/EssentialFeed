@@ -2,7 +2,7 @@
 //  DebuggingSceneDelegate.swift
 //  EssentialApp
 //
-//  Created by Nicolò Curioni  on 11/03/24.
+//  Created by Nicolò Curioni on 07/04/24.
 //
 
 #if DEBUG
@@ -38,7 +38,7 @@ private class DebuggingHTTPClient: HTTPClient {
     init(connectivity: String) {
         self.connectivity = connectivity
     }
-    
+
     func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
         switch connectivity {
         case "online":
@@ -47,7 +47,6 @@ private class DebuggingHTTPClient: HTTPClient {
         default:
             completion(.failure(NSError(domain: "offline", code: 0)))
         }
-        
         return Task()
     }
     
@@ -84,5 +83,4 @@ private class DebuggingHTTPClient: HTTPClient {
         ]])
     }
 }
-
 #endif

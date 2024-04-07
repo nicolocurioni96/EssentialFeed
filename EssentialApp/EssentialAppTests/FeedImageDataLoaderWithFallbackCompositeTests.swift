@@ -66,28 +66,28 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase, FeedImageDataLo
         let primaryData = anyData()
         let (sut, primaryLoader, _) = makeSUT()
         
-        expect(sut, toCompleteWith: .success(primaryData)) {
+        expect(sut, toCompleteWith: .success(primaryData), when: {
             primaryLoader.complete(with: primaryData)
-        }
+        })
     }
     
     func test_loadImageData_deliversFallbackDataOnFallbackLoaderSuccess() {
         let fallbackData = anyData()
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
         
-        expect(sut, toCompleteWith: .success(fallbackData)) {
+        expect(sut, toCompleteWith: .success(fallbackData), when: {
             primaryLoader.complete(with: anyNSError())
             fallbackLoader.complete(with: fallbackData)
-        }
+        })
     }
     
     func test_loadImageData_deliversErrorOnBothPrimaryAndFallbackLoaderFailure() {
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(anyNSError())) {
+        expect(sut, toCompleteWith: .failure(anyNSError()), when: {
             primaryLoader.complete(with: anyNSError())
             fallbackLoader.complete(with: anyNSError())
-        }
+        })
     }
     
     // MARK: - Helpers

@@ -10,7 +10,6 @@ import EssentialFeed
 import EssentialApp
 
 class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoaderTestCase {
-    
     func test_init_doesNotLoadImageData() {
         let (_, loader) = makeSUT()
         
@@ -56,7 +55,7 @@ class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoaderTes
     func test_loadImageData_cachesLoadedDataOnLoaderSuccess() {
         let cache = CacheSpy()
         let url = anyURL()
-        let imageData = Data()
+        let imageData = anyData()
         let (sut, loader) = makeSUT(cache: cache)
         
         _ = sut.loadImageData(from: url) { _ in }

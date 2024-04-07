@@ -10,14 +10,13 @@ import EssentialFeed
 import EssentialApp
 
 class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
-
     func test_load_deliversFeedOnLoaderSuccess() {
         let feed = uniqueFeed()
         let sut = makeSUT(loaderResult: .success(feed))
         
         expect(sut, toCompleteWith: .success(feed))
     }
-     
+    
     func test_load_deliversErrorOnLoaderFailure() {
         let sut = makeSUT(loaderResult: .failure(anyNSError()))
         

@@ -2,12 +2,12 @@
 //  AppDelegate.swift
 //  EssentialApp
 //
-//  Created by Nicolò Curioni  on 03/03/24.
+//  Created by Nicolò Curioni on 07/04/24.
 //
 
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -20,4 +20,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return configuration
     }
 }
-

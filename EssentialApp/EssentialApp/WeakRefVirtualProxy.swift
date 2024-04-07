@@ -1,8 +1,8 @@
 //
 //  WeakRefVirtualProxy.swift
-//  EssentialFeediOS
+//  EssentialApp
 //
-//  Created by Nicolò Curioni  on 19/02/24.
+//  Created by Nicolò Curioni on 07/04/24.
 //
 
 import UIKit
