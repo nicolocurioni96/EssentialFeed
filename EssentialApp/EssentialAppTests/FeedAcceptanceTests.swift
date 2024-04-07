@@ -21,7 +21,7 @@ class FeedAcceptanceTests: XCTestCase {
     }
     
     func test_onLaunch_displaysCachedRemoteFeedWhenCustomerHasNoConnectivity() {
-        let sharedStore = InMemoryFeedStore()
+        let sharedStore = InMemoryFeedStore.empty
         let onlineFeed = launch(httpClient: .online(response), store: sharedStore)
         
         onlineFeed.simulateFeedImageViewVisible(at: 0)
@@ -38,6 +38,22 @@ class FeedAcceptanceTests: XCTestCase {
         let feed = launch(httpClient: .offline, store: .empty)
         
         XCTAssertEqual(feed.numberOfRenderedFeedImageViews(), 0)
+    }
+    
+    func test_onEnteringBackground_deletesExcpiredFeedCache() {
+        let store = InMemoryFeedStore.wthExpiredFeedCache
+        
+        enterBackground(with: store)
+        
+        XCTAssertNil(store.feedCache, "Expected to delete expired cache")
+    }
+    
+    func test_onEnteringBackground_keepNonExcpiredFeedCache() {
+        let store = InMemoryFeedStore.wthNonExpiredFeedCache
+        
+        enterBackground(with: store)
+        
+        XCTAssertNotNil(store.feedCache, "Expected to keep non-expired cache")
     }
     
     // MARK: - Helpers
@@ -80,8 +96,12 @@ class FeedAcceptanceTests: XCTestCase {
     }
     
     private class InMemoryFeedStore: FeedStore, FeedImageDataStore {
-        private var feedCache: CachedFeed?
+        private(set) var feedCache: CachedFeed?
         private var feedImageDataCache: [URL: Data] = [:]
+        
+        private init(feedCache: CachedFeed? = nil) {
+            self.feedCache = feedCache
+        }
         
         func deleteCachedFeed(completion: @escaping FeedStore.DeletionCompletion) {
             feedCache = nil
@@ -109,6 +129,14 @@ class FeedAcceptanceTests: XCTestCase {
         static var empty: InMemoryFeedStore {
             InMemoryFeedStore()
         }
+        
+        static var wthExpiredFeedCache: InMemoryFeedStore {
+            InMemoryFeedStore(feedCache: CachedFeed(feed: [], timestamp: Date.distantPast))
+        }
+        
+        static var wthNonExpiredFeedCache: InMemoryFeedStore {
+            InMemoryFeedStore(feedCache: CachedFeed(feed: [], timestamp: Date()))
+        }
     }
     
     private func response(for url: URL) -> (Data, HTTPURLResponse) {
@@ -135,5 +163,10 @@ class FeedAcceptanceTests: XCTestCase {
             ["id": UUID().uuidString, "image": "http://image.com"],
             ["id": UUID().uuidString, "image": "http://image.com"]
         ]])
+    }
+    
+    private func enterBackground(with store: InMemoryFeedStore) {
+        let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
+        sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
     }
 }
