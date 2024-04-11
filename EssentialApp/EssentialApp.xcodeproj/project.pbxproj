@@ -193,8 +193,8 @@
 			children = (
 				AFD157632B951E4E008D3FBF /* Helpers */,
 				AF9BC8712B9C7B9900D9EA8D /* FeedLoaderCacheDecoratorTests.swift */,
-				A109396D2BC2D1C500BBB4FC /* FeedAcceptanceTests.swift */,
 				A109396B2BC2D13E00BBB4FC /* FeedUIIntegrationTests.swift */,
+				A109396D2BC2D1C500BBB4FC /* FeedAcceptanceTests.swift */,
 				A16DE5882BC2BE940062BAC3 /* SceneDelegateTests.swift */,
 				AFD157572B94F0DC008D3FBF /* FeedLoaderWithFallbackCompositeTests.swift */,
 				AFD1575E2B94F84F008D3FBF /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
