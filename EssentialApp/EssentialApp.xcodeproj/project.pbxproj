@@ -27,7 +27,6 @@
 		A10ABAC42BC3482D00906002 /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10ABAC32BC3482D00906002 /* HTTPClientStub.swift */; };
 		A10ABAC62BC348CA00906002 /* InMemoryFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10ABAC52BC348C900906002 /* InMemoryFeedStore.swift */; };
 		A16DE5892BC2BE940062BAC3 /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5882BC2BE940062BAC3 /* SceneDelegateTests.swift */; };
-		A16DE5A92BC2C9B10062BAC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5A82BC2C9B10062BAC3 /* AppDelegate.swift */; };
 		A16DE5AB2BC2C9CC0062BAC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5AA2BC2C9CC0062BAC3 /* SceneDelegate.swift */; };
 		A16DE5AF2BC2CA210062BAC3 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5AE2BC2CA210062BAC3 /* FeedUIComposer.swift */; };
 		A16DE5B12BC2CA320062BAC3 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5B02BC2CA320062BAC3 /* MainQueueDispatchDecorator.swift */; };
@@ -41,7 +40,7 @@
 		A16DE5C12BC2CB100062BAC3 /* FeedImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DE5C02BC2CB100062BAC3 /* FeedImageDataLoaderCacheDecorator.swift */; };
 		AF08C5CD2BD69192003840F3 /* EssentialFeedAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF08C5CC2BD69192003840F3 /* EssentialFeedAPI.framework */; };
 		AF08C5CE2BD69192003840F3 /* EssentialFeedAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF08C5CC2BD69192003840F3 /* EssentialFeedAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AF34EF7E2B94F077006DD458 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF34EF7C2B94F077006DD458 /* Main.storyboard */; };
+		AF1B77A12BD939B400ED10F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1B77A02BD939B400ED10F1 /* AppDelegate.swift */; };
 		AF34EF802B94F078006DD458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF34EF7F2B94F078006DD458 /* Assets.xcassets */; };
 		AF34EF832B94F078006DD458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF34EF812B94F078006DD458 /* LaunchScreen.storyboard */; };
 		AF9BC8722B9C7B9900D9EA8D /* FeedLoaderCacheDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BC8712B9C7B9900D9EA8D /* FeedLoaderCacheDecoratorTests.swift */; };
@@ -103,7 +102,6 @@
 		A16DE5882BC2BE940062BAC3 /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		A16DE58F2BC2C8D10062BAC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../../Downloads/essential-feed-case-study-b5cbfd46f940d21ddb9dd4154fb687631151c609/EssentialApp/EssentialApp/Info.plist"; sourceTree = "<group>"; };
 		A16DE5A72BC2C9A40062BAC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A16DE5A82BC2C9B10062BAC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16DE5AA2BC2C9CC0062BAC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A16DE5AE2BC2CA210062BAC3 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		A16DE5B02BC2CA320062BAC3 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
@@ -116,8 +114,9 @@
 		A16DE5BE2BC2CAF20062BAC3 /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		A16DE5C02BC2CB100062BAC3 /* FeedImageDataLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 		AF08C5CC2BD69192003840F3 /* EssentialFeedAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeedAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF1B779F2BD936B400ED10F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../.Trash/Info.plist; sourceTree = "<group>"; };
+		AF1B77A02BD939B400ED10F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF34EF732B94F077006DD458 /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF34EF7D2B94F077006DD458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF34EF7F2B94F078006DD458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF34EF822B94F078006DD458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF34EF892B94F078006DD458 /* EssentialAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,8 +172,8 @@
 		AF34EF752B94F077006DD458 /* EssentialApp */ = {
 			isa = PBXGroup;
 			children = (
-				A16DE5A82BC2C9B10062BAC3 /* AppDelegate.swift */,
 				A16DE5AA2BC2C9CC0062BAC3 /* SceneDelegate.swift */,
+				AF1B77A02BD939B400ED10F1 /* AppDelegate.swift */,
 				A16DE5AE2BC2CA210062BAC3 /* FeedUIComposer.swift */,
 				A16DE5B02BC2CA320062BAC3 /* MainQueueDispatchDecorator.swift */,
 				A16DE5B22BC2CA4C0062BAC3 /* WeakRefVirtualProxy.swift */,
@@ -186,7 +185,6 @@
 				A16DE5BE2BC2CAF20062BAC3 /* FeedImageDataLoaderWithFallbackComposite.swift */,
 				A16DE5C02BC2CB100062BAC3 /* FeedImageDataLoaderCacheDecorator.swift */,
 				A16DE58F2BC2C8D10062BAC3 /* Info.plist */,
-				AF34EF7C2B94F077006DD458 /* Main.storyboard */,
 				AF34EF7F2B94F078006DD458 /* Assets.xcassets */,
 				AF34EF812B94F078006DD458 /* LaunchScreen.storyboard */,
 			);
@@ -196,6 +194,7 @@
 		AF34EF8C2B94F078006DD458 /* EssentialAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF1B779F2BD936B400ED10F1 /* Info.plist */,
 				AFD157632B951E4E008D3FBF /* Helpers */,
 				AF9BC8712B9C7B9900D9EA8D /* FeedLoaderCacheDecoratorTests.swift */,
 				A109396B2BC2D13E00BBB4FC /* FeedUIIntegrationTests.swift */,
@@ -287,9 +286,9 @@
 		AF34EF6B2B94F077006DD458 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = NO;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					AF34EF722B94F077006DD458 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -327,7 +326,6 @@
 			files = (
 				AF34EF832B94F078006DD458 /* LaunchScreen.storyboard in Resources */,
 				AF34EF802B94F078006DD458 /* Assets.xcassets in Resources */,
-				AF34EF7E2B94F077006DD458 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16DE5A92BC2C9B10062BAC3 /* AppDelegate.swift in Sources */,
+				AF1B77A12BD939B400ED10F1 /* AppDelegate.swift in Sources */,
 				A16DE5B12BC2CA320062BAC3 /* MainQueueDispatchDecorator.swift in Sources */,
 				A16DE5BB2BC2CAC20062BAC3 /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				A16DE5B52BC2CA720062BAC3 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
@@ -402,14 +400,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AF34EF7C2B94F077006DD458 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF34EF7D2B94F077006DD458 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AF34EF812B94F078006DD458 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -457,6 +447,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -517,6 +508,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -548,7 +540,7 @@
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -580,7 +572,7 @@
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -607,6 +599,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EssentialAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialAppTests;
@@ -627,6 +620,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EssentialAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialAppTests;
