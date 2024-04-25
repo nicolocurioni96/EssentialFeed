@@ -1,8 +1,5 @@
 //
-//  FeedImageDataLoaderCacheDecoratorTests.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni  on 09/03/24.
+//  Created by Nicolò Curioni
 //
 
 import XCTest

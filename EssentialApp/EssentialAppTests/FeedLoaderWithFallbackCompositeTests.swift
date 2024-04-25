@@ -1,8 +1,5 @@
 //
-//  FeedLoaderWithFallbackCompositeTests.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni  on 03/03/24.
+//  Created by Nicolò Curioni
 //
 
 import XCTest

@@ -1,8 +1,5 @@
 //
-//  FeedUIIntegrationTests.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni on 07/04/24.
+//  Created by Nicolò Curioni
 //
 
 import XCTest

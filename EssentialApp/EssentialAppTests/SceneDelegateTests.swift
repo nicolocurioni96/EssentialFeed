@@ -1,8 +1,5 @@
 //
-//  SceneDelegateTests.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni on 07/04/24.
+//  Created by Nicolò Curioni
 //
 
 import XCTest
@@ -21,7 +18,7 @@ class SceneDelegateTests: XCTestCase {
         XCTAssertFalse(window.isHidden, "Expected window to be visible")
     }
     
-    func test_sceneWillConnectToSession_configuresRootViewController() {
+    func test_configureWindow_configuresRootViewController() {
         let sut = SceneDelegate()
         sut.window = UIWindow()
         

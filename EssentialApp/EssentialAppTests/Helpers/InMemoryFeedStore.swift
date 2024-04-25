@@ -1,8 +1,5 @@
 //
-//  InMemoryFeedStore.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni on 07/04/24.
+//  Created by Nicolò Curioni
 //
 
 import Foundation
@@ -49,11 +46,11 @@ extension InMemoryFeedStore {
         InMemoryFeedStore()
     }
     
-    static var wthExpiredFeedCache: InMemoryFeedStore {
+    static var withExpiredFeedCache: InMemoryFeedStore {
         InMemoryFeedStore(feedCache: CachedFeed(feed: [], timestamp: Date.distantPast))
     }
     
-    static var wthNonExpiredFeedCache: InMemoryFeedStore {
+    static var withNonExpiredFeedCache: InMemoryFeedStore {
         InMemoryFeedStore(feedCache: CachedFeed(feed: [], timestamp: Date()))
     }
 }

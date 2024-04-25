@@ -1,8 +1,5 @@
 //
-//  FeedAcceptanceTests.swift
-//  EssentialAppTests
-//
-//  Created by Nicolò Curioni on 07/04/24.
+//  Created by Nicolò Curioni
 //
 
 import XCTest
@@ -11,7 +8,6 @@ import EssentialFeediOS
 @testable import EssentialApp
 
 class FeedAcceptanceTests: XCTestCase {
-    
     func test_onLaunch_displaysRemoteFeedWhenCustomerHasConnectivity() {
         let feed = launch(httpClient: .online(response), store: .empty)
         
@@ -23,7 +19,6 @@ class FeedAcceptanceTests: XCTestCase {
     func test_onLaunch_displaysCachedRemoteFeedWhenCustomerHasNoConnectivity() {
         let sharedStore = InMemoryFeedStore.empty
         let onlineFeed = launch(httpClient: .online(response), store: sharedStore)
-        
         onlineFeed.simulateFeedImageViewVisible(at: 0)
         onlineFeed.simulateFeedImageViewVisible(at: 1)
         
@@ -34,22 +29,22 @@ class FeedAcceptanceTests: XCTestCase {
         //XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 1), makeImageData())
     }
     
-    func test_onLaunch_displayEmptyFeedWhenCustomerHasNoConnectivityAndNoCache() {
+    func test_onLaunch_displaysEmptyFeedWhenCustomerHasNoConnectivityAndNoCache() {
         let feed = launch(httpClient: .offline, store: .empty)
         
         XCTAssertEqual(feed.numberOfRenderedFeedImageViews(), 0)
     }
     
-    func test_onEnteringBackground_deletesExcpiredFeedCache() {
-        let store = InMemoryFeedStore.wthExpiredFeedCache
+    func test_onEnteringBackground_deletesExpiredFeedCache() {
+        let store = InMemoryFeedStore.withExpiredFeedCache
         
         enterBackground(with: store)
         
         XCTAssertNil(store.feedCache, "Expected to delete expired cache")
     }
     
-    func test_onEnteringBackground_keepNonExcpiredFeedCache() {
-        let store = InMemoryFeedStore.wthNonExpiredFeedCache
+    func test_onEnteringBackground_keepsNonExpiredFeedCache() {
+        let store = InMemoryFeedStore.withNonExpiredFeedCache
         
         enterBackground(with: store)
         
@@ -60,15 +55,20 @@ class FeedAcceptanceTests: XCTestCase {
     
     private func launch(
         httpClient: HTTPClientStub = .offline,
-        store: InMemoryFeedStore = .empty) -> FeedViewController {
-            let sut = SceneDelegate(httpClient: httpClient, store: store)
-            sut.window = UIWindow()
-            sut.configureWindow()
-            
-            let nav = sut.window?.rootViewController as? UINavigationController
-            
-            return nav?.topViewController as!  FeedViewController
-        }
+        store: InMemoryFeedStore = .empty
+    ) -> FeedViewController {
+        let sut = SceneDelegate(httpClient: httpClient, store: store)
+        sut.window = UIWindow()
+        sut.configureWindow()
+        
+        let nav = sut.window?.rootViewController as? UINavigationController
+        return nav?.topViewController as! FeedViewController
+    }
+    
+    private func enterBackground(with store: InMemoryFeedStore) {
+        let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
+        sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
+    }
     
     private func response(for url: URL) -> (Data, HTTPURLResponse) {
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
@@ -77,11 +77,11 @@ class FeedAcceptanceTests: XCTestCase {
     
     private func makeData(for url: URL) -> Data {
         switch url.absoluteString {
-            case "http://image.com":
-                return makeImageData()
-                
-            default:
-                return makeFeedData()
+        case "http://image.com":
+            return makeImageData()
+            
+        default:
+            return makeFeedData()
         }
     }
     
@@ -94,10 +94,5 @@ class FeedAcceptanceTests: XCTestCase {
             ["id": UUID().uuidString, "image": "http://image.com"],
             ["id": UUID().uuidString, "image": "http://image.com"]
         ]])
-    }
-    
-    private func enterBackground(with store: InMemoryFeedStore) {
-        let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
-        sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
     }
 }
