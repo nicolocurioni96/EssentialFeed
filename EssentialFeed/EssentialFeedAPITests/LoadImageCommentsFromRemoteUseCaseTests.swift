@@ -26,6 +26,16 @@ class LoadImageCommentsFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
     
+    func test_loadTwice_requestsDataFromURLTwice() {
+        let url = URL(string: "https://a-url.com")!
+        let (sut, client) = makeSUT()
+        
+        sut.load { _ in }
+        sut.load { _ in }
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
     
     // MARK: - Helpers
     
