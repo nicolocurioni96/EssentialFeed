@@ -10,6 +10,7 @@ import EssentialFeed
 import EssentialFeedAPI
 
 class FeedItemsMapperTests: XCTestCase {
+    
     func test_map_throwsErrorOnNon200HTTPResponse() throws {
         let json = makeItemsJSON([])
         let samples = [199, 201, 300, 400, 500]

@@ -32,10 +32,8 @@
 		AF08C5C02BD68F58003840F3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74FF992AD7ED2D00DE2811 /* HTTPClient.swift */; };
 		AF08C5C12BD68F58003840F3 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61DBEA2AE0894C00717A7C /* URLSessionHTTPClient.swift */; };
 		AF08C5C22BD68F58003840F3 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74FF9B2AD7EDBB00DE2811 /* FeedItemsMapper.swift */; };
-		AF08C5C32BD68F58003840F3 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F4D692AD31682001BD106 /* RemoteFeedLoader.swift */; };
 		AF08C5C42BD68F72003840F3 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC53A02B8BE6EC00AA78DA /* HTTPURLResponse+StatusCode.swift */; };
 		AF08C5C52BD68FA4003840F3 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68AFF02AF84A55004E8298 /* LoadFeedFromCacheUseCaseTests.swift */; };
-		AF08C5C62BD68FA4003840F3 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F4D662AD30CC5001BD106 /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		AF08C5C72BD68FA4003840F3 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74FF9D2AD8207700DE2811 /* URLSessionHTTPClientTests.swift */; };
 		AF08C5C82BD68FA4003840F3 /* LoadFeedImageDataFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE4A3472B8764A4003DB593 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */; };
 		AF08C5CA2BD68FEA003840F3 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC53A22B8BE7DA00AA78DA /* URLProtocolStub.swift */; };
@@ -200,8 +198,6 @@
 		AF08C5D12BD698EA003840F3 /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
 		AF3F4D612AD2F1DB001BD106 /* FeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImage.swift; sourceTree = "<group>"; };
 		AF3F4D632AD2F31C001BD106 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
-		AF3F4D662AD30CC5001BD106 /* LoadFeedFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
-		AF3F4D692AD31682001BD106 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		AF49D1322B8109AF0055840F /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		AF49D1342B810AF70055840F /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		AF54B1822BE8FC15004FF8FF /* ImageComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComment.swift; sourceTree = "<group>"; };
@@ -470,7 +466,6 @@
 				AFF2C4B02BECF74C0016DE92 /* Image Comments API */,
 				AF68AFF02AF84A55004E8298 /* LoadFeedFromCacheUseCaseTests.swift */,
 				AFFDAA1D2BF127BE008D35C6 /* FeedItemsMapperTests.swift */,
-				AF3F4D662AD30CC5001BD106 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				AFE4A3472B8764A4003DB593 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = EssentialFeedAPITests;
@@ -716,7 +711,6 @@
 			children = (
 				AFCC539D2B8BDE2C00AA78DA /* RemoteFeedImageDataLoader.swift */,
 				AF74FF9B2AD7EDBB00DE2811 /* FeedItemsMapper.swift */,
-				AF3F4D692AD31682001BD106 /* RemoteFeedLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1151,7 +1145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF08C5BF2BD68F58003840F3 /* RemoteFeedImageDataLoader.swift in Sources */,
-				AF08C5C32BD68F58003840F3 /* RemoteFeedLoader.swift in Sources */,
 				AFC1F2772BE2344D00831369 /* RemoteImageCommentsLoader.swift in Sources */,
 				AF08C5C12BD68F58003840F3 /* URLSessionHTTPClient.swift in Sources */,
 				AF08C5C22BD68F58003840F3 /* FeedItemsMapper.swift in Sources */,
@@ -1170,7 +1163,6 @@
 			files = (
 				AF08C5C52BD68FA4003840F3 /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
 				AF08C5CA2BD68FEA003840F3 /* URLProtocolStub.swift in Sources */,
-				AF08C5C62BD68FA4003840F3 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				AFFDAA1E2BF127BE008D35C6 /* FeedItemsMapperTests.swift in Sources */,
 				AFF2C4BA2BECFB940016DE92 /* RemoteLoaderTests.swift in Sources */,
 				AFFDAA202BF12DE4008D35C6 /* ImageCommentsMapperTests.swift in Sources */,
@@ -1424,7 +1416,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
@@ -1459,7 +1451,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
@@ -1481,7 +1473,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1500,7 +1492,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1793,7 +1785,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1812,7 +1804,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 59XYW74885;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolocurioni.EssentialFeedAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
