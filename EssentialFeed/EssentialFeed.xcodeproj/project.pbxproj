@@ -132,6 +132,7 @@
 		AFFDAA7E2BF17D24008D35C6 /* ImageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDAA7D2BF17D24008D35C6 /* ImageCommentCell.swift */; };
 		AFFDAA802BF17D70008D35C6 /* ImageComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFFDAA7F2BF17D70008D35C6 /* ImageComments.storyboard */; };
 		AFFDAA832BF17DE1008D35C6 /* ImageCommentsSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDAA822BF17DE1008D35C6 /* ImageCommentsSnapshotTests.swift */; };
+		AFFDAA8C2BF18207008D35C6 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDAA8B2BF18207008D35C6 /* CellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +345,7 @@
 		AFFDAA822BF17DE1008D35C6 /* ImageCommentsSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsSnapshotTests.swift; sourceTree = "<group>"; };
 		AFFDAA882BF17F0A008D35C6 /* IMAGE_COMMENTS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMAGE_COMMENTS_light.png; sourceTree = "<group>"; };
 		AFFDAA892BF17F0A008D35C6 /* IMAGE_COMMENTS_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMAGE_COMMENTS_dark.png; sourceTree = "<group>"; };
+		AFFDAA8B2BF18207008D35C6 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,8 +625,8 @@
 		AF57BCC12B7503C400B03F9E /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
-				AFFDAA782BF17CF3008D35C6 /* Image Comments UI */,
 				AF57BCC32B7503C400B03F9E /* EssentialFeediOS.docc */,
+				AFFDAA782BF17CF3008D35C6 /* Image Comments UI */,
 				AFFDAA682BF176ED008D35C6 /* Shared UI */,
 				AFF823F02B793C150047A364 /* Feed UI */,
 			);
@@ -895,6 +897,7 @@
 			isa = PBXGroup;
 			children = (
 				AFFD516C2B7523750087B77C /* ListViewController.swift */,
+				AFFDAA8B2BF18207008D35C6 /* CellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1419,6 +1422,7 @@
 				AFD05E352B8510E2002E19AE /* ErrorView.swift in Sources */,
 				A13719512BC5EF2700B20F03 /* UITableView+HeaderString.swift in Sources */,
 				AFFD516D2B7523750087B77C /* ListViewController.swift in Sources */,
+				AFFDAA8C2BF18207008D35C6 /* CellController.swift in Sources */,
 				AFF823F62B7942620047A364 /* FeedImageCellController.swift in Sources */,
 				AF49D1332B8109AF0055840F /* UITableView+Dequeueing.swift in Sources */,
 				AF49D1352B810AF70055840F /* UIImageView+Animations.swift in Sources */,
