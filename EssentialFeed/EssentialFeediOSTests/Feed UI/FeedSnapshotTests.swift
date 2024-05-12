@@ -16,9 +16,6 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithContent())
         
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_CONTENT_LIGHT")
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_DARK")
-        
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_CONTENT_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_DARK")
     }
@@ -27,9 +24,6 @@ class FeedSnapshotTests: XCTestCase {
         let sut = makeSUT()
         
         sut.display(feedWithFailedImageLoading())
-        
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_LIGHT")
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_DARK")
         
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_DARK")
