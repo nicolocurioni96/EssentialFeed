@@ -107,6 +107,7 @@
 		AFFD516B2B7518530087B77C /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF63FAD2AE06E9100B18C48 /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		AFFD516D2B7523750087B77C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516C2B7523750087B77C /* FeedViewController.swift */; };
 		AFFD51702B7534980087B77C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD516F2B7534980087B77C /* FeedImageCell.swift */; };
+		AFFDAA1E2BF127BE008D35C6 /* FeedItemsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDAA1D2BF127BE008D35C6 /* FeedItemsMapperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +279,7 @@
 		AFFD51612B7509CE0087B77C /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		AFFD516C2B7523750087B77C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		AFFD516F2B7534980087B77C /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
+		AFFDAA1D2BF127BE008D35C6 /* FeedItemsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 				AFF2C4AD2BECF5530016DE92 /* Shared API Infra */,
 				AFF2C4B02BECF74C0016DE92 /* Image Comments API */,
 				AF68AFF02AF84A55004E8298 /* LoadFeedFromCacheUseCaseTests.swift */,
+				AFFDAA1D2BF127BE008D35C6 /* FeedItemsMapperTests.swift */,
 				AF3F4D662AD30CC5001BD106 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				AFE4A3472B8764A4003DB593 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 			);
@@ -1168,6 +1171,7 @@
 				AF08C5C52BD68FA4003840F3 /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
 				AF08C5CA2BD68FEA003840F3 /* URLProtocolStub.swift in Sources */,
 				AF08C5C62BD68FA4003840F3 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
+				AFFDAA1E2BF127BE008D35C6 /* FeedItemsMapperTests.swift in Sources */,
 				AFF2C4BA2BECFB940016DE92 /* RemoteLoaderTests.swift in Sources */,
 				AF08C5C72BD68FA4003840F3 /* URLSessionHTTPClientTests.swift in Sources */,
 				AF08C5D62BD69D81003840F3 /* SharedTestHelpers.swift in Sources */,
