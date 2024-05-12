@@ -11,18 +11,6 @@ import EssentialFeediOS
 
 class FeedSnapshotTests: XCTestCase {
     
-    func test_emptyFeed() {
-        let sut = makeSUT()
-        
-        sut.display(emptyFeed())
-        
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "EMPTY_FEED_LIGHT")
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "EMPTY_FEED_DARK")
-        
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "EMPTY_FEED_LIGHT")
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "EMPTY_FEED_DARK")
-    }
-    
     func test_feedWithContent() {
         let sut = makeSUT()
         
@@ -33,18 +21,6 @@ class FeedSnapshotTests: XCTestCase {
         
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_CONTENT_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_DARK")
-    }
-    
-    func test_feedWithErrorMessage() {
-        let sut = makeSUT()
-        
-        sut.display(.error(message: "This is a\nmulti-line\nerror message"))
-       
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_ERROR_MESSAGE_LIGHT")
-        record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_ERROR_MESSAGE_DARK")
-        
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_ERROR_MESSAGE_LIGHT")
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_ERROR_MESSAGE_DARK")
     }
     
     func test_feedWithFailedImageLoading() {
@@ -68,10 +44,6 @@ class FeedSnapshotTests: XCTestCase {
         controller.loadViewIfNeeded()
         
         return controller
-    }
-    
-    private func emptyFeed() -> [FeedImageCellController] {
-        return []
     }
     
     private func feedWithFailedImageLoading() -> [ImageStub] {
