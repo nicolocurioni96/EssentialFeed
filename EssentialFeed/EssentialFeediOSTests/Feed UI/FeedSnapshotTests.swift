@@ -16,8 +16,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithContent())
         
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_CONTENT_LIGHT")
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_DARK")
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
     }
     
     func test_feedWithFailedImageLoading() {
@@ -25,8 +25,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithFailedImageLoading())
         
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_LIGHT")
-        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_DARK")
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
+        assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
     }
     
     // MARK: - Helpers
@@ -70,7 +70,7 @@ private extension ListViewController {
             stub.controller = cellController
             return CellController(cellController)
         }
-
+        
         display(cells)
     }
 }
@@ -79,14 +79,14 @@ private class ImageStub: FeedImageCellControllerDelegate {
     let viewModel: FeedImageViewModel
     let image: UIImage?
     weak var controller: FeedImageCellController?
-
+    
     init(description: String?, location: String?, image: UIImage?) {
         self.viewModel = FeedImageViewModel(
             description: description,
             location: location)
         self.image = image
     }
-
+    
     func didRequestImage() {
         controller?.display(ResourceLoadingViewModel(isLoading: false))
         
@@ -97,6 +97,6 @@ private class ImageStub: FeedImageCellControllerDelegate {
             controller?.display(ResourceErrorViewModel(message: "any"))
         }
     }
-
+    
     func didCancelImageRequest() {}
 }
