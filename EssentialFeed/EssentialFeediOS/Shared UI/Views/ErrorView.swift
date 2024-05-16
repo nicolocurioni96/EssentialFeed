@@ -33,6 +33,15 @@ public final class ErrorView: UIButton {
         super.init(coder: coder)
     }
     
+    private var titleAttributes: AttributeContainer {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        return AttributeContainer([
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.preferredFont(forTextStyle: .body)])
+    }
+    
     private func configure() {
         backgroundColor = .red
         
