@@ -8,7 +8,21 @@
 import XCTest
 
 extension XCTestCase {
-    func assert(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
+    enum RecordAssertCase: String {
+        case record
+        case assert
+    }
+    
+    func performDynamicSnapshot(with snaphotType: RecordAssertCase = .record, snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
+        switch snaphotType {
+        case .record:
+            record(snapshot: snapshot, named: name, file: file, line: line)
+        case .assert:
+            assert(snapshot: snapshot, named: name, file: file, line: line)
+        }
+    }
+    
+    private func assert(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
         let snapshotData = makeSnapshotData(for: snapshot, file: file, line: line)
         let snapshotURL = makeSnapshotURL(named: name, file: file)
         
@@ -28,7 +42,7 @@ extension XCTestCase {
         }
     }
     
-    func record(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
+    private func record(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
         let snapshotData = makeSnapshotData(for: snapshot, file: file, line: line)
         let snapshotURL = makeSnapshotURL(named: name, file: file)
         
