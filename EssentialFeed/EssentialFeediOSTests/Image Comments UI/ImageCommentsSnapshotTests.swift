@@ -16,6 +16,9 @@ class ImageCommentsSnapshotTests: XCTestCase {
         
         sut.display(comments())
         
+        //record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "IMAGE_COMMENTS_light")
+        //record(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "IMAGE_COMMENTS_dark")
+        
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "IMAGE_COMMENTS_light")
         assert(snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "IMAGE_COMMENTS_dark")
     }
