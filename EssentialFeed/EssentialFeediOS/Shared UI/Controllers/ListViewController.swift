@@ -23,6 +23,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         super.viewDidLoad()
         
         configureTableView()
+        configureTraitCollectionObservers()
         refresh()
     }
     
