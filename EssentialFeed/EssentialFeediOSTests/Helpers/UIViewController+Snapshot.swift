@@ -52,11 +52,11 @@ private final class SnapshotWindow: UIWindow {
     }
     
     override var safeAreaInsets: UIEdgeInsets {
-        return configuration.safeAreaInsets
+        configuration.safeAreaInsets
     }
     
     override var traitCollection: UITraitCollection {
-        return UITraitCollection(traitsFrom: [super.traitCollection, configuration.traitCollection])
+        configuration.traitCollection
     }
     
     func snapshot() -> UIImage {
