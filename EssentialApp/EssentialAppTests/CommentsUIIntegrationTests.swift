@@ -12,7 +12,7 @@ import EssentialApp
 import EssentialFeed
 import EssentialFeediOS
 
-class CommentsUIIntegrationTests: FeedUIIntegrationTests {
+class CommentsUIIntegrationTests: XCTestCase {
     
     func test_commentsView_hasTitle() {
         let (sut, _) = makeSUT()
@@ -36,7 +36,7 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertEqual(loader.loadCommentsCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
     
-    override func test_loadingCommentsIndicator_isVisibleWhileLoadingComments() {
+    func test_loadingCommentsIndicator_isVisibleWhileLoadingComments() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -93,7 +93,7 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         wait(for: [exp], timeout: 1.0)
     }
     
-    override func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+    func test_loadCommentsCompletion_rendersErrorMessageOnErrorUntilNextReload() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -106,7 +106,7 @@ class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
-    override func test_tapOnErrorView_hidesErrorMessage() {
+    func test_tapOnErrorView_hidesErrorMessage() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
