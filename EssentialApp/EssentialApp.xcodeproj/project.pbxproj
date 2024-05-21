@@ -91,7 +91,7 @@
 		A16DE5B62BC2CA920062BAC3 /* FeedLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		A16DE5B82BC2CAA50062BAC3 /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
 		AF08C5CC2BD69192003840F3 /* EssentialFeedAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeedAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF1B779F2BD936B400ED10F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../.Trash/Info.plist; sourceTree = "<group>"; };
+		AF1875102BFCC8DB00F1A987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1B77A02BD939B400ED10F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF34EF732B94F077006DD458 /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF34EF7F2B94F078006DD458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		AF34EF8C2B94F078006DD458 /* EssentialAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				AF1B779F2BD936B400ED10F1 /* Info.plist */,
+				AF1875102BFCC8DB00F1A987 /* Info.plist */,
 				AFD157632B951E4E008D3FBF /* Helpers */,
 				A16DE5882BC2BE940062BAC3 /* SceneDelegateTests.swift */,
 				A109396B2BC2D13E00BBB4FC /* FeedUIIntegrationTests.swift */,
