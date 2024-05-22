@@ -12,7 +12,6 @@ import EssentialFeediOS
 final class FeedViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> FeedImageDataLoader.Publisher
-    
     private let selection: (FeedImage) -> Void
     
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<FeedImageCellController>>
@@ -28,6 +27,7 @@ final class FeedViewAdapter: ResourceView {
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.url)
             })
+            
             let view = FeedImageCellController(
                 viewModel: FeedImagePresenter.map(model),
                 delegate: adapter,
@@ -41,7 +41,7 @@ final class FeedViewAdapter: ResourceView {
                 errorView: WeakRefVirtualProxy(view),
                 mapper: UIImage.tryMake)
             
-            return  CellController(id: model, view)
+            return CellController(id: model, view)
         })
     }
 }
@@ -55,5 +55,4 @@ extension UIImage {
         }
         return image
     }
-    
 }

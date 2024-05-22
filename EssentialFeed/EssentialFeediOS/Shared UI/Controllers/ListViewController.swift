@@ -52,7 +52,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
     }
-    
+
     public func display(_ viewModel: ResourceLoadingViewModel) {
         if viewModel.isLoading {
             refreshControl?.beginRefreshing()
@@ -69,6 +69,12 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         super.viewDidLayoutSubviews()
         
         tableView.sizeTableHeaderToFit()
+    }
+    
+    public override func traitCollectionDidChange(_ previous: UITraitCollection?) {
+        if previous?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            tableView.reloadData()
+        }
     }
     
     @IBAction private func refresh() {

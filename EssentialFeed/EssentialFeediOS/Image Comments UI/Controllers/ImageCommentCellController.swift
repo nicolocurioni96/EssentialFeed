@@ -15,7 +15,6 @@ public class ImageCommentCellController: NSObject, UITableViewDataSource {
         self.model = model
     }
     
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
