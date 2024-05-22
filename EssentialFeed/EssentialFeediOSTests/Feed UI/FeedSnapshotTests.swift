@@ -38,6 +38,16 @@ class FeedSnapshotTests: XCTestCase {
         performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
     }
     
+    func test_feedWithLoadMoreError() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithLoadMoreError())
+        
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_LOAD_MORE_ERROR_light")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_LOAD_MORE_ERROR_dark")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light, contentSize: .extraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_extraExtraExtraLarge")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> ListViewController {
@@ -72,12 +82,22 @@ class FeedSnapshotTests: XCTestCase {
     }
     
     private func feedWithLoadMoreIndicator() -> [CellController] {
+        let loadMore = LoadMoreCellController()
+        loadMore.display(ResourceLoadingViewModel(isLoading: true))
+        return feedWith(loadMore: loadMore)
+    }
+    
+    private func feedWithLoadMoreError() -> [CellController] {
+        let loadMore = LoadMoreCellController()
+        loadMore.display(ResourceErrorViewModel(message: "This is a multiline\nerror message"))
+        return feedWith(loadMore: loadMore)
+    }
+    
+    private func feedWith(loadMore: LoadMoreCellController) -> [CellController] {
         let stub = feedWithContent().last!
         let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
         stub.controller = cellController
         
-        let loadMore = LoadMoreCellController()
-        loadMore.display(ResourceLoadingViewModel(isLoading: true))
         return [
             CellController(id: UUID(), cellController),
             CellController(id: UUID(), loadMore)
