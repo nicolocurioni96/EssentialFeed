@@ -186,5 +186,9 @@ extension ListViewController {
     var loadMoreFeedErrorMessage: String? {
         return loadMoreFeedCell()?.message
     }
+    
+    var canLoadMoreFeed: Bool {
+        loadMoreFeedCell() != nil
+    }
 }
 
