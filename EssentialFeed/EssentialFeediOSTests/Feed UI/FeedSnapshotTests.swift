@@ -16,8 +16,8 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithContent())
         
-        performDynamicSnapshot(with: .record, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_dark")
-        performDynamicSnapshot(with: .record, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_CONTENT_dark")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
     }
     
     func test_feedWithFailedImageLoading() {
@@ -25,8 +25,17 @@ class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithFailedImageLoading())
         
-        performDynamicSnapshot(with: .record, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
-        performDynamicSnapshot(with: .record, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_FAILED_IMAGE_LOADING_light")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_FAILED_IMAGE_LOADING_dark")
+    }
+    
+    func test_feedWithLoadMoreIndicator() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithLoadMoreIndicator())
+        
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .light)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
+        performDynamicSnapshot(with: .assert, snapshot: sut.snapshot(for: .iPhone15Pro(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
     }
     
     // MARK: - Helpers
@@ -59,6 +68,19 @@ class FeedSnapshotTests: XCTestCase {
                 location: "Garth Pier",
                 image: UIImage.make(withColor: .green)
             )
+        ]
+    }
+    
+    private func feedWithLoadMoreIndicator() -> [CellController] {
+        let stub = feedWithContent().last!
+        let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
+        stub.controller = cellController
+        
+        let loadMore = LoadMoreCellController()
+        loadMore.display(ResourceLoadingViewModel(isLoading: true))
+        return [
+            CellController(id: UUID(), cellController),
+            CellController(id: UUID(), loadMore)
         ]
     }
 }
