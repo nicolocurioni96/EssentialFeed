@@ -167,6 +167,6 @@ extension ListViewController {
     }
     
     private var feedImagesSection: Int { 0 }
-    private var feedLoadMoreSection: Int { 2 }
+    private var feedLoadMoreSection: Int { 1 }
 }
 

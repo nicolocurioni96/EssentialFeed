@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import EssentialFeed
 import EssentialFeedAPI
+import EssentialFeediOS
 
 public extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
@@ -88,6 +89,18 @@ extension Publisher {
 extension Publisher {
     func dispatchOnMainQueue() -> AnyPublisher<Output, Failure> {
         receive(on: DispatchQueue.immedtiateWhenOnMainQueueScheduler).eraseToAnyPublisher()
+    }
+}
+
+public extension Paginated {
+    var loadMorePublisher: (() -> AnyPublisher<Self, Error>)? {
+        guard let loadMore = loadMore else { return nil }
+        
+        return {
+            Deferred {
+                Future(loadMore)
+            }.eraseToAnyPublisher()
+        }
     }
 }
 
