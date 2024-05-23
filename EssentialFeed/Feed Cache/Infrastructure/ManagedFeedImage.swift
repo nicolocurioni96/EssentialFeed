@@ -37,6 +37,10 @@ extension ManagedFeedImage {
         })
     }
     
+    static func data(with url: URL, in context: NSManagedObjectContext) throws -> Data? {
+        return try first(with: url, in: context)?.data
+    }
+    
     var local: LocalFeedImage {
         return LocalFeedImage(id: id, description: imageDescription, location: location, url: url)
     }
