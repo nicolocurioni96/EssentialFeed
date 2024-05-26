@@ -38,7 +38,6 @@
 		AFAD501E2B9C85AC00573496 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD501B2B9C85AC00573496 /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AFAD501F2B9C85AC00573496 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD501C2B9C85AC00573496 /* EssentialFeediOS.framework */; };
 		AFAD50202B9C85AC00573496 /* EssentialFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD501C2B9C85AC00573496 /* EssentialFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AFB0B8052BFF6AEC0073B304 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0B8042BFF6AEC0073B304 /* NullStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +100,6 @@
 		AF77C83F2BFB78C000A7862F /* CommentsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		AFAD501B2B9C85AC00573496 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAD501C2B9C85AC00573496 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFB0B8042BFF6AEC0073B304 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +148,6 @@
 			children = (
 				A16DE5AA2BC2C9CC0062BAC3 /* SceneDelegate.swift */,
 				AF455D542BDF1345006DCB76 /* CombineHelpers.swift */,
-				AFB0B8042BFF6AEC0073B304 /* NullStore.swift */,
 				AF1B77A02BD939B400ED10F1 /* AppDelegate.swift */,
 				A16DE5AE2BC2CA210062BAC3 /* FeedUIComposer.swift */,
 				AF77C83D2BFB785700A7862F /* CommentsUIComposer.swift */,
@@ -310,7 +307,6 @@
 				AF1B77A12BD939B400ED10F1 /* AppDelegate.swift in Sources */,
 				A16DE5AF2BC2CA210062BAC3 /* FeedUIComposer.swift in Sources */,
 				A16DE5AB2BC2C9CC0062BAC3 /* SceneDelegate.swift in Sources */,
-				AFB0B8052BFF6AEC0073B304 /* NullStore.swift in Sources */,
 				A16DE5B32BC2CA4C0062BAC3 /* WeakRefVirtualProxy.swift in Sources */,
 				A16DE5B72BC2CA920062BAC3 /* FeedLoaderPresentationAdapter.swift in Sources */,
 				A16DE5B92BC2CAA50062BAC3 /* FeedViewAdapter.swift in Sources */,
